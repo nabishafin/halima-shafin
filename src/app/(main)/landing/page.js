@@ -4,6 +4,8 @@ import HeroBanner from "@/components/landingPageComponents/HeroBanner";
 import { StepsSection } from "@/components/landingPageComponents/StepsSection";
 import FixedButton from "@/components/landingPageComponents/FixedButton";
 import React from "react";
+import { ClientsSection } from "@/components/landingPageComponents/ClientsSection";
+import { TestimonialSection } from "@/components/landingPageComponents/TestimonialSection";
 
 const LandingPage = () => {
   return (
@@ -12,6 +14,8 @@ const LandingPage = () => {
       <ContentSection />
       <StepsSection />
       <CompanyLogos />
+      <ClientsSection />
+      <TestimonialSection />
     </div>
   );
 };
