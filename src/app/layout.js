@@ -1,10 +1,10 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
+import FixedButton from "@/components/landingPageComponents/FixedButton";
 
-// শুধু Lato import
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"], // যেসব weight লাগবে
+  weight: ["100", "300", "400", "700", "900"],
   variable: "--font-lato",
 });
 
@@ -18,6 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${lato.variable} antialiased`}>
         <main data-scroll-container>{children}</main>
+
+        {/* 👇 Fixed button সব পেইজে show করবে */}
+        <FixedButton />
       </body>
     </html>
   );

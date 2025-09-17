@@ -36,7 +36,7 @@ export function StepsSection() {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className="bg-white p-7 rounded-xl shadow-md border border-gray-100 text-left hover:shadow-lg transition-shadow duration-300"
+              className="bg-white p-7 rounded-xl   text-left hover:shadow-lg transition-shadow duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

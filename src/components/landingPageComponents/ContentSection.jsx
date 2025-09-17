@@ -22,7 +22,7 @@ export function ContentSection() {
             <div className="">
               <CirclePlus className="w-6 h-6 text-black" />
             </div>
-            <span className="text-2xl font-[500] text-gray-700">
+            <span className="text-2xl font-[600] text-[#686868">
               We've met you before
             </span>
           </motion.div>
@@ -36,7 +36,7 @@ export function ContentSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <span className="text-black">You've got the ability,</span>{" "}
-            <span className="text-gray-600">
+            <span className="text-[#686868]">
               but your Content isn't reflecting your brilliance.
             </span>
           </motion.h1>

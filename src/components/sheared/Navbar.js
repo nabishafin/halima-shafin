@@ -8,10 +8,10 @@ const Navbar = () => {
   useLocoScroll();
   return (
     <div className="data-scroll-section">
-      <nav className="sticky  text-white top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10">
+      <nav className="sticky  text-white top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm  ">
         <div className="w-auto md:w-10/12 mx-auto px-6 py-4 flex items-center justify-between">
           <div className="text-2xl font-bold">.C</div>
-          <div className="hidden md:flex items-center space-x-8 text-sm font-semibold">
+          <div className="hidden md:flex items-center space-x-12 text-sm font-[500]">
             <a href="#you" className=" transition-colors">
               You
             </a>
