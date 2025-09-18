@@ -2,13 +2,12 @@
 
 import useLocoScroll from "@/hooks/useLocoScroll";
 import React, { use } from "react";
-import { Button } from "../ui/button";
 
 const Navbar = () => {
   useLocoScroll();
   return (
-    <div className="data-scroll-section">
-      <nav className="sticky  text-white top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm  ">
+    <div className="">
+      <nav className="  text-white left-0 right-0  bg-black/80 sticky top-0 backdrop-blur-sm z-40  ">
         <div className="w-auto md:w-10/12 mx-auto px-6 py-4 flex items-center justify-between">
           <div className="text-2xl font-bold">.C</div>
           <div className="hidden md:flex items-center space-x-12 text-sm font-[500]">
@@ -25,9 +24,7 @@ const Navbar = () => {
               Pricing
             </a>
           </div>
-          <Button className="bg-white text-black hover:bg-gray-200">
-            Connect
-          </Button>
+          <div className=" text-black bg-black/80 backdrop-blur-sm "></div>
         </div>
       </nav>
     </div>
