@@ -132,7 +132,7 @@ export function WhatWeDoSection() {
                     {services.map((service, index) => (
                       <button
                         key={index}
-                        className="bg-white text-black px-6 py-[10px] rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                        className="bg-white text-black px-6 py-[7px] rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
                       >
                         {service}
                       </button>
