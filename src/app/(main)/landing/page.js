@@ -5,6 +5,10 @@ import { StepsSection } from "@/components/landingPageComponents/StepsSection";
 import { ClientsSection } from "@/components/landingPageComponents/ClientsSection";
 import { TestimonialSection } from "@/components/landingPageComponents/TestimonialSection";
 import { WhatWeDoSection } from "@/components/landingPageComponents/WhatWeDoSection";
+import { RatingSection } from "@/components/landingPageComponents/RatingSection";
+import { PricingSection } from "@/components/landingPageComponents/PricingSection";
+import { TeamSection } from "@/components/landingPageComponents/TeamSection";
+import { ContactSection } from "@/components/landingPageComponents/ContactSection";
 
 const LandingPage = () => {
   return (
@@ -16,6 +20,10 @@ const LandingPage = () => {
       <ClientsSection />
       <TestimonialSection />
       <WhatWeDoSection />
+      <RatingSection />
+      <PricingSection />
+      <TeamSection />
+      <ContactSection />
     </div>
   );
 };

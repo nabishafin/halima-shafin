@@ -22,7 +22,7 @@ export function ContentSection() {
             <div className="">
               <CirclePlus className="w-6 h-6 text-black" />
             </div>
-            <span className="text-2xl font-[600] text-[#686868">
+            <span className="text-md md:text-2xl font-[600] text-[#686868]">
               We've met you before
             </span>
           </motion.div>

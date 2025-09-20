@@ -1,0 +1,209 @@
+"use client";
+import Image from "next/image";
+
+import team1 from "../../../public/team-1.avif";
+import team2 from "../../../public/team-2.avif";
+import team3 from "../../../public/team-3.avif";
+import team4 from "../../../public/team-4.avif";
+import team5 from "../../../public/team-5.avif";
+import team6 from "../../../public/team-6.avif";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import useLocoScroll from "@/hooks/useLocoScroll";
+import { Button } from "@/components/ui/button";
+
+const teamMembers = [
+  {
+    id: "1",
+    name: "Kim",
+    role: "Researcher",
+    image: team1,
+    description:
+      "Blends insight with innovation to uncover what's working, what's next, and what cuts through, turning industry trends into actionable content intelligence.",
+  },
+  {
+    id: "2",
+    name: "O'Hara",
+    role: "Video Architect",
+    image: team2,
+    description:
+      "Creates compelling visual narratives that engage audiences and drive meaningful connections through innovative video storytelling techniques.",
+  },
+  {
+    id: "3",
+    name: "Pierre",
+    role: "Production Lead",
+    image: team3,
+    description:
+      "Orchestrates seamless production workflows, ensuring every project delivers exceptional quality while meeting tight deadlines and exceeding expectations.",
+  },
+  {
+    id: "4",
+    name: "Raygan",
+    role: "Lead Editor",
+    image: team4,
+    description:
+      "Transforms raw content into polished masterpieces, bringing creative vision to life through meticulous attention to detail and innovative editing techniques.",
+  },
+  {
+    id: "5",
+    name: "Ash",
+    role: "Developer",
+    image: team5,
+    description:
+      "Builds robust digital solutions that power creative workflows, combining technical expertise with user-centered design principles.",
+  },
+  {
+    id: "6",
+    name: "Anita",
+    role: "Operations",
+    image: team6,
+    description:
+      "Ensures smooth operations across all departments, optimizing processes and maintaining the high standards that define our creative excellence.",
+  },
+];
+
+export function TeamSection() {
+  useLocoScroll(); // Locomotive smooth scroll
+  const [hoveredMember, setHoveredMember] = useState(null);
+
+  // Framer Motion variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, delay: i * 0.15, ease: "easeOut" },
+    }),
+  };
+
+  return (
+    <div className="data-scroll-section">
+      <section className="py-0 md:py-16">
+        <div className="w-full md:w-10/12 mx-auto bg-white p-4 md:p-16 rounded-2xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <motion.div
+              className="space-y-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={fadeUp}
+            >
+              <motion.div className="space-y-2" custom={0} variants={fadeUp}>
+                <h1 className="text-5xl lg:text-6xl font-bold text-black leading-tight">
+                  Built by <span className="text-black">.Creatives</span>
+                </h1>
+                <h2 className="text-4xl lg:text-5xl font-bold text-[#686868] leading-tight">
+                  Powered
+                  <br />
+                  by purpose.
+                </h2>
+              </motion.div>
+
+              <motion.div
+                className="space-y-6 text-gray-700 max-w-md"
+                custom={1}
+                variants={fadeUp}
+              >
+                <p className="text-lg leading-relaxed">
+                  We believe great work comes from{" "}
+                  <span className="font-semibold text-black">
+                    diverse collaboration.
+                  </span>{" "}
+                  That's why we work closely with each other to ensure every
+                  project meets your goals and exceeds expectations.
+                </p>
+
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-black">
+                    Be part of our mission
+                  </h3>
+                  <p className="text-base leading-relaxed">
+                    If you're ready to create and collaborate, we'd love to hear
+                    from you.
+                  </p>
+                </div>
+
+                <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-base font-medium transition-colors">
+                  Join us
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Team Grid */}
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[2/3] bg-gray-900 transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/40"
+                  onMouseEnter={() => setHoveredMember(member.id)}
+                  onMouseLeave={() => setHoveredMember(null)}
+                  custom={index}
+                  variants={fadeUp}
+                >
+                  {/* Background Image */}
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    priority={index < 2}
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+
+                  {/* Role Badge */}
+                  <div className="absolute top-4 left-4 right-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-white rounded-full opacity-80" />
+                      <span className="text-white text-sm font-medium tracking-wide">
+                        {member.role}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Name - Always visible */}
+                  <div className="absolute bottom-4 left-4 right-4 z-20">
+                    <h3 className="text-white text-2xl font-bold drop-shadow-lg">
+                      {member.name}
+                    </h3>
+                  </div>
+
+                  {/* Hover Description */}
+                  <div
+                    className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/90 to-transparent transition-all duration-500 ease-out transform ${
+                      hoveredMember === member.id
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-full opacity-0"
+                    }`}
+                    style={{ height: "70%" }}
+                  >
+                    <div className="absolute bottom-16 left-4 right-4 space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-white rounded-full opacity-80" />
+                        <span className="text-white text-sm font-medium tracking-wide">
+                          {member.role}
+                        </span>
+                      </div>
+                      <p className="text-white/90 text-sm leading-relaxed">
+                        {member.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -100,7 +100,7 @@ export function ClientsSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <p className="text-gray-500 text-lg max-w-md lg:ml-auto font-semibold">
+            <p className="text-gray-500 text-lg max-w-sm lg:ml-auto font-semibold">
               From start ups to industry experts, we've helped over 470 leaders
               and companies show up online with clarity and quality.
             </p>
