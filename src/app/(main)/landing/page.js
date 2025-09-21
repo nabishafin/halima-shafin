@@ -9,6 +9,7 @@ import { RatingSection } from "@/components/landingPageComponents/RatingSection"
 import { PricingSection } from "@/components/landingPageComponents/PricingSection";
 import { TeamSection } from "@/components/landingPageComponents/TeamSection";
 import { ContactSection } from "@/components/landingPageComponents/ContactSection";
+import { FaqSection } from "@/components/landingPageComponents/FaqSection";
 
 const LandingPage = () => {
   return (
@@ -23,6 +24,7 @@ const LandingPage = () => {
       <RatingSection />
       <PricingSection />
       <TeamSection />
+      <FaqSection />
       <ContactSection />
     </div>
   );
