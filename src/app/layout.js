@@ -1,6 +1,6 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
-import FixedButton from "@/components/landingPageComponents/FixedButton";
+import ClientLayout from "./ClientLayout";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -16,12 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} antialiased`}>
-        <main data-scroll-container>{children}</main>
-
-        {/* 👇 Fixed button সব পেইজে show করবে */}
-        <FixedButton />
-      </body>
+      {/* 👇 pass lato to client layout */}
+      <ClientLayout lato={lato}>{children}</ClientLayout>
     </html>
   );
 }

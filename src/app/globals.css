@@ -2,6 +2,15 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
+/* Extra styling (optional) */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 
 @theme inline {
   --color-background: var(--background);

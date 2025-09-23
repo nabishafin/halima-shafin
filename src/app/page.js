@@ -1,29 +1,38 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { CompanyLogos } from "@/components/landingPageComponents/CompanyLogos";
+import { ContentSection } from "@/components/landingPageComponents/ContentSection";
+import HeroBanner from "@/components/landingPageComponents/HeroBanner";
+import { StepsSection } from "@/components/landingPageComponents/StepsSection";
+import { ClientsSection } from "@/components/landingPageComponents/ClientsSection";
+import { TestimonialSection } from "@/components/landingPageComponents/TestimonialSection";
+import { WhatWeDoSection } from "@/components/landingPageComponents/WhatWeDoSection";
+import { RatingSection } from "@/components/landingPageComponents/RatingSection";
+import { PricingSection } from "@/components/landingPageComponents/PricingSection";
+import { TeamSection } from "@/components/landingPageComponents/TeamSection";
+import { ContactSection } from "@/components/landingPageComponents/ContactSection";
+import { FaqSection } from "@/components/landingPageComponents/FaqSection";
 import useLocoScroll from "@/hooks/useLocoScroll";
 
-export default function IntroductionPage() {
-  useLocoScroll(); // scroll init
-  const router = useRouter();
-  const [form, setForm] = useState({ email: "", password: "", country: "" });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    router.push("/landing");
-  };
+const LandingPage = () => {
+  useLocoScroll(); // 👈
 
   return (
-    <main
-      data-scroll-container
-      className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-28 py-20"
-    >
-      <h1 className="h-80">Hello from introduction page</h1>
-      <h1 className="h-80">Hello from introduction page</h1>
-      <h1 className="h-80">Hello from introduction page</h1>
-      <h1 className="h-80">Hello from introduction page</h1>
-      <h1 className="h-80">Hello from introduction page</h1>
-    </main>
+    <div className="bg-[#F5F5F5] roboto-bold" data-scroll-container>
+      <HeroBanner />
+      <ContentSection />
+      <StepsSection />
+      <CompanyLogos />
+      <ClientsSection />
+      <TestimonialSection />
+      <WhatWeDoSection />
+      <RatingSection />
+      <PricingSection />
+      <TeamSection />
+      <FaqSection />
+      <ContactSection />
+    </div>
   );
-}
+};
+
+export default LandingPage;
