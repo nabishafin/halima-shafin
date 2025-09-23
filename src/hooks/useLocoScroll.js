@@ -22,11 +22,22 @@ export default function useLocoScroll() {
         tablet: { smooth: true },
       });
 
+      // Global access এর জন্য window object এ store করি
+      window.locomotiveScroll = scroll;
+
       scroll.update();
+
+      // Page load হওয়ার পর scroll update করি
+      setTimeout(() => {
+        scroll.update();
+      }, 100);
     })();
 
     return () => {
-      if (scroll) scroll.destroy();
+      if (scroll) {
+        scroll.destroy();
+        window.locomotiveScroll = null;
+      }
     };
   }, []);
 }

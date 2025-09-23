@@ -1,6 +1,10 @@
+"use client";
+
 import { Lato } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "./ClientLayout";
+import Navbar from "@/components/sheared/Navbar";
+import { Footer } from "@/components/sheared/Footer";
+import useLocoScroll from "@/hooks/useLocoScroll";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -8,17 +12,18 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
-export const metadata = {
-  title: "My Lato App",
-  description: "Using only Lato font in Next.js",
-};
-
 export default function RootLayout({ children }) {
+  useLocoScroll();
+
   return (
-    <html lang="en">
-      <body className={`${lato.variable} antialiased`}>
-        {/* Navbar and Footer can stay in ClientLayout */}
-        <ClientLayout>{children}</ClientLayout>
+    <html lang="en" className={lato.variable}>
+      <head>{/* meta, links, etc. */}</head>
+      <body className={lato.className}>
+        <Navbar />
+        <div data-scroll-container>
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

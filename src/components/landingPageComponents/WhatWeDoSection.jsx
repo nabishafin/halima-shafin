@@ -26,6 +26,7 @@ export function WhatWeDoSection() {
 
   return (
     <section
+      id="us"
       className="relative  text-white py-16 px-4 md:py-24 data-scroll-section bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage.src})` }} // ✅ dynamic image use
     >

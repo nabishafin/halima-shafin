@@ -30,7 +30,7 @@ export function StepsSection() {
   ];
 
   return (
-    <section className="px-4">
+    <section id="you" className="px-4">
       <div className="w-auto md:w-10/12 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {steps.map((step, index) => (

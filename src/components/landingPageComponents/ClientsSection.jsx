@@ -75,7 +75,7 @@ export function ClientsSection() {
   ];
 
   return (
-    <section className="data-scroll-section py-0 md:py-10 px-4">
+    <section id="clients" className="data-scroll-section py-0 md:py-10 px-4">
       <div className="w-full md:w-10/12 mx-auto">
         {/* Title Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-center mb-12">

@@ -205,6 +205,7 @@ export function PricingSection() {
 
   return (
     <div
+      id="pricing"
       className=" text-white px-4 py-16 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage.src})` }}
     >

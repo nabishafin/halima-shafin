@@ -1,10 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [locomotiveScroll, setLocomotiveScroll] = useState(null);
+
+  useEffect(() => {
+    // Locomotive Scroll instance পাওয়ার জন্য
+    const checkForScroll = () => {
+      if (window.locomotiveScroll) {
+        setLocomotiveScroll(window.locomotiveScroll);
+      }
+    };
+
+    // Locomotive Scroll load হওয়ার জন্য অপেক্ষা করি
+    const interval = setInterval(() => {
+      checkForScroll();
+      if (window.locomotiveScroll) {
+        clearInterval(interval);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -14,66 +34,96 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Updated scroll function for Locomotive Scroll
+  const scrollToSection = (id) => {
+    const section = document.querySelector(id);
+    if (section && locomotiveScroll) {
+      // Locomotive Scroll এর scrollTo method ব্যবহার করি
+      locomotiveScroll.scrollTo(section, {
+        offset: -100, // navbar height এর জন্য offset
+        duration: 1000,
+        easing: [0.25, 0.0, 0.35, 1.0],
+      });
+    } else if (section) {
+      // Fallback: যদি Locomotive Scroll available না থাকে
+      const yOffset = -100;
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
-    <header className="sticky top-0 w-full z-50">
-      <nav className="bg-black/80 backdrop-blur-sm text-white">
-        <div className="mx-auto w-auto md:w-10/12 px-6 py-6 flex items-center relative">
-          {/* Logo */}
-          <div className="text-2xl font-bold">
-            <Image
-              src="/logo.jpg"
-              alt="Logo"
-              width={120}
-              height={60}
-              priority
-              className="h-12 w-auto"
-            />
-          </div>
+    <header className="fixed top-0 w-full z-[9999] bg-black/80 backdrop-blur-sm">
+      <nav className="text-white">
+        <div className="mx-auto w-auto md:w-10/12 px-6 py-6">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="text-2xl font-bold flex-shrink-0">
+              <Image
+                src="/logo.jpg"
+                alt="Logo"
+                width={120}
+                height={60}
+                priority
+                className="h-12 w-auto"
+              />
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-16 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
-            <a href="#you" className="hover:text-gray-300 transition-colors">
-              You
-            </a>
-            <a
-              href="#clients"
-              className="hover:text-gray-300 transition-colors"
-            >
-              Clients
-            </a>
-            <a href="#us" className="hover:text-gray-300 transition-colors">
-              Us
-            </a>
-            <a
-              href="#pricing"
-              className="hover:text-gray-300 transition-colors"
-            >
-              Pricing
-            </a>
-          </div>
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex items-center space-x-16 text-sm font-medium">
+              <button
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+                onClick={() => scrollToSection("#you")}
+              >
+                You
+              </button>
+              <button
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+                onClick={() => scrollToSection("#clients")}
+              >
+                Clients
+              </button>
+              <button
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+                onClick={() => scrollToSection("#us")}
+              >
+                Us
+              </button>
+              <button
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+                onClick={() => scrollToSection("#pricing")}
+              >
+                Pricing
+              </button>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1 ml-auto"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <span
-              className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${
-                isMobileMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </button>
+            {/* Right side spacer for balance (desktop only) */}
+            <div className="hidden md:block flex-shrink-0 w-[120px]"></div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              <span
+                className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
+                  isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <span
+                className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${
+                  isMobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
+                  isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -83,34 +133,42 @@ const Navbar = () => {
           }`}
         >
           <div className="px-6 py-4 space-y-4">
-            <a
-              href="#you"
-              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2"
-              onClick={closeMobileMenu}
+            <button
+              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2 w-full text-left"
+              onClick={() => {
+                closeMobileMenu();
+                scrollToSection("#you");
+              }}
             >
               You
-            </a>
-            <a
-              href="#clients"
-              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2"
-              onClick={closeMobileMenu}
+            </button>
+            <button
+              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2 w-full text-left"
+              onClick={() => {
+                closeMobileMenu();
+                scrollToSection("#clients");
+              }}
             >
               Clients
-            </a>
-            <a
-              href="#us"
-              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2"
-              onClick={closeMobileMenu}
+            </button>
+            <button
+              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2 w-full text-left"
+              onClick={() => {
+                closeMobileMenu();
+                scrollToSection("#us");
+              }}
             >
               Us
-            </a>
-            <a
-              href="#pricing"
-              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2"
-              onClick={closeMobileMenu}
+            </button>
+            <button
+              className="block text-sm font-medium hover:text-gray-300 transition-colors py-2 w-full text-left"
+              onClick={() => {
+                closeMobileMenu();
+                scrollToSection("#pricing");
+              }}
             >
               Pricing
-            </a>
+            </button>
           </div>
         </div>
       </nav>

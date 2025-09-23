@@ -5,20 +5,15 @@ import Navbar from "@/components/sheared/Navbar";
 import { Footer } from "@/components/sheared/Footer";
 import FixedButton from "@/components/landingPageComponents/FixedButton";
 
-export default function ClientLayout({ children }) {
+export default function ClientLayout({ children, lato }) {
   useLocoScroll();
 
   return (
-    <div id="app">
+    <body className={`${lato.variable} antialiased`}>
       <Navbar />
-      {/* Entire scrollable content including footer */}
-      <main data-scroll-container>
-        {children}
-        <Footer />
-      </main>
-
-      {/* Floating button stays outside scroll */}
+      <main>{children}</main>
+      <Footer />
       <FixedButton />
-    </div>
+    </body>
   );
 }
