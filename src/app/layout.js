@@ -16,8 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* 👇 pass lato to client layout */}
-      <ClientLayout lato={lato}>{children}</ClientLayout>
+      <body className={`${lato.variable} antialiased`}>
+        {/* Navbar and Footer can stay in ClientLayout */}
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }

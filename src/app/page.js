@@ -12,13 +12,9 @@ import { PricingSection } from "@/components/landingPageComponents/PricingSectio
 import { TeamSection } from "@/components/landingPageComponents/TeamSection";
 import { ContactSection } from "@/components/landingPageComponents/ContactSection";
 import { FaqSection } from "@/components/landingPageComponents/FaqSection";
-import useLocoScroll from "@/hooks/useLocoScroll";
-
 const LandingPage = () => {
-  useLocoScroll(); // 👈
-
   return (
-    <div className="bg-[#F5F5F5] roboto-bold" data-scroll-container>
+    <div className="bg-[#F5F5F5] roboto-bold">
       <HeroBanner />
       <ContentSection />
       <StepsSection />
