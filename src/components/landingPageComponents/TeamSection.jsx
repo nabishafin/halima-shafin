@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 
-import team1 from "../../../public/team-1.avif";
-import team2 from "../../../public/team-2.avif";
-import team3 from "../../../public/team-3.avif";
-import team4 from "../../../public/team-4.avif";
-import team5 from "../../../public/team-5.avif";
-import team6 from "../../../public/team-6.avif";
+import team1 from "../../../public/team-1.jpg";
+import team2 from "../../../public/team-2.jpg";
+import team3 from "../../../public/team-3.jpg";
+import team4 from "../../../public/team-4.jpg";
+import team5 from "../../../public/team-5.jpg";
+import team6 from "../../../public/team-6.jpg";
 
 import { useState } from "react";
 import { motion } from "framer-motion";

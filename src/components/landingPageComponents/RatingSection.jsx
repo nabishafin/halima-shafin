@@ -5,7 +5,7 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import customer1 from "../../../public/customer-1.avif";
+import customer1 from "../../../public/customer-6.jpg";
 
 export function RatingSection() {
   useLocoScroll(); // Locomotive scroll enable

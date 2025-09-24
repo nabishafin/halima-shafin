@@ -5,12 +5,12 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 import Image from "next/image";
 import { useState } from "react";
 
-import customer1 from "../../../public/customer-1.avif";
-import customer2 from "../../../public/customer-2.avif";
-import customer3 from "../../../public/customer-3.avif";
-import customer4 from "../../../public/customer-4.avif";
-import customer5 from "../../../public/customer-5.avif";
-import customer6 from "../../../public/customer-6.avif";
+import customer1 from "../../../public/customer-1.jpg";
+import customer2 from "../../../public/customer-2.jpg";
+import customer3 from "../../../public/customer-3.jpg";
+import customer4 from "../../../public/customer-4.jpg";
+import customer5 from "../../../public/customer-5.jpg";
+import customer6 from "../../../public/customer-6.jpg";
 
 import custologo1 from "../../../public/custo-logo-1.png";
 import custologo2 from "../../../public/custo-logo-2.avif";
@@ -157,7 +157,7 @@ export function ClientsSection() {
                       alt={item.name}
                       width={500}
                       height={500}
-                      className={`w-full h-full object-cover transition-all duration-500 ease-out ${
+                      className={`w-full h-full object-cover object-[center_20%] transition-all duration-500 ease-out ${
                         hoveredItem === item.id
                           ? "scale-95 blur-sm"
                           : "scale-100 blur-0"

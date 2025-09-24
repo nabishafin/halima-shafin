@@ -1,5 +1,5 @@
 "use client";
-import pic from "../../../public/testomonial-img.avif";
+import pic from "../../../public/testomonial.jpg";
 import { motion } from "framer-motion";
 import useLocoScroll from "@/hooks/useLocoScroll";
 import Image from "next/image";
@@ -58,7 +58,7 @@ export function TestimonialSection() {
                 src={pic}
                 alt="Bozoma St John"
                 fill
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:blur-sm"
+                className="object-cover object-[center_top] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:blur-sm"
               />
 
               {/* Overlay Text at bottom */}
