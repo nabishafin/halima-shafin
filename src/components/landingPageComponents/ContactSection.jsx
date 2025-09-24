@@ -9,7 +9,47 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 export function ContactSection() {
   useLocoScroll();
 
-  // Framer Motion variants
+  // form states
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("✅ Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("❌ Failed to send message.");
+      }
+    } catch (error) {
+      setStatus("❌ Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Framer Motion animation
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -51,7 +91,7 @@ export function ContactSection() {
               Can't find what you want?
             </h2>
 
-            <form className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div>
                 <label
                   htmlFor="name"
@@ -62,6 +102,8 @@ export function ContactSection() {
                 <Input
                   id="name"
                   type="text"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Full name"
                   className="w-full py-4 px-4 text-lg"
                   required
@@ -78,6 +120,8 @@ export function ContactSection() {
                 <Input
                   id="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your email"
                   className="w-full py-4 px-4 text-lg"
                   required
@@ -93,6 +137,8 @@ export function ContactSection() {
                 </label>
                 <Textarea
                   id="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Your message"
                   className="w-full min-h-[160px] resize-none py-4 px-4 text-lg"
                   rows={6}
@@ -101,11 +147,16 @@ export function ContactSection() {
 
               <Button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-black hover:bg-gray-800 text-white py-6 rounded-full text-lg font-semibold"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </form>
+
+            {status && (
+              <p className="text-center mt-4 text-sm font-medium">{status}</p>
+            )}
 
             <p className="text-sm text-gray-500 mt-6 text-center">
               By submitting, you agree to our{" "}
