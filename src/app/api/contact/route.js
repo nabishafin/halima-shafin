@@ -8,12 +8,11 @@ export async function POST(req) {
     const transporter = nodemailer.createTransport({
       service: "gmail", // or "hotmail", "yahoo", or SMTP host
       auth: {
-        user: process.env.EMAIL_USER, // put in .env.local
+        user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
     });
 
-    // Mail options
     await transporter.sendMail({
       from: email,
       to: process.env.EMAIL_USER, // your receiving email
