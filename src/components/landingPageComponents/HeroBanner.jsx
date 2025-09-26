@@ -51,7 +51,7 @@ const HeroBanner = () => {
 
         {/* Solutions List */}
         <motion.ul
-          className="text-white text-left max-w-3xl w-full mx-auto mt-2 space-y-3 text-xs sm:text-xs md:text-sm leading-relaxed px-2"
+          className="text-white text-left max-w-3xl w-full mx-auto mt-2 space-y-3 text-xs sm:text-xs md:text-base leading-relaxed px-2"
           initial="hidden"
           animate="visible"
           variants={{

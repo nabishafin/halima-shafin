@@ -10,7 +10,7 @@ export function ContentSection() {
   return (
     <div className="data-scroll-section">
       <section className="flex items-center justify-center px-6 py-20 ">
-        <div className="w-full md:w-10/12 mx-auto text-center">
+        <div className="w-full md:w-11/12 lg:w-10/12 mx-auto text-center">
           {/* Top indicator */}
           <motion.div
             className="flex items-center justify-start gap-2 mb-12"
