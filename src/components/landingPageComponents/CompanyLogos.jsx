@@ -41,23 +41,23 @@ export function CompanyLogos() {
   ];
 
   return (
-    <section className="py-16 px-4  data-scroll-section">
-      <div className="w-full md:max-w-10/12 mx-auto text-center">
+    <section className="py- px-4 data-scroll-section mt-16">
+      <div className="w-full md:w-11/12 lg:w-10/12 mx-auto text-center">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-16 text-gray-800"
+          className="text-4xl md:text-5xl font-bold mb-16 text-black"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          You are in good <span className="text-black">Company</span>
+          The company <span className="">we keep</span>
         </motion.h2>
 
         <div className="space-y-2">
           {companies.map((row, rowIndex) => (
             <motion.div
               key={rowIndex}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 items-center justify-items-center"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center justify-items-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -70,12 +70,12 @@ export function CompanyLogos() {
               {row.map((company, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center h-32 w-full bg-white  rounded-lg  p-2 hover:shadow-lg transition-shadow duration-300"
+                  className="flex items-center justify-center h-40 w-full bg-white rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
                 >
                   <Image
                     src={company.src}
                     alt={company.alt}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-24 max-w-24 object-contain"
                   />
                 </div>
               ))}
