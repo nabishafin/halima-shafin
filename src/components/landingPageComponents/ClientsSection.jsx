@@ -149,12 +149,12 @@ export function ClientsSection() {
                   </div>
 
                   {/* Image */}
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] border-4 border-white">
+                  <div className="relative overflow-hidden rounded-2xl aspect-[6/6] border-4 border-white">
                     <Image
                       src={item.image || "/placeholder.svg"}
                       alt={item.name}
-                      width={500}
-                      height={500}
+                      width={900} // Increased size
+                      height={900} // Increased size
                       className={`w-full h-full object-cover object-[center_20%] transition-all duration-500 ease-out ${
                         hoveredItem === item.id
                           ? "scale-95 blur-sm"
@@ -172,7 +172,7 @@ export function ClientsSection() {
                     >
                       <Image
                         width={500}
-                        height={500}
+                        height={600}
                         src={item.logo || "/placeholder.svg"}
                         alt={`${item.name} logo`}
                         className="max-w-[200px] max-h-[100px] object-contain filter brightness-0 invert"
