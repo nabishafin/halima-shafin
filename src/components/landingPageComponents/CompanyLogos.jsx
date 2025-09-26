@@ -42,7 +42,7 @@ export function CompanyLogos() {
 
   return (
     <section className="py- px-4 data-scroll-section mt-16">
-      <div className="w-full md:w-11/12 lg:w-10/12 mx-auto text-center">
+      <div className="w-full lg:w-11/12 mx-auto text-center">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-16 text-black"
           initial={{ opacity: 0, y: 50 }}
@@ -57,7 +57,7 @@ export function CompanyLogos() {
           {companies.map((row, rowIndex) => (
             <motion.div
               key={rowIndex}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center justify-items-center"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 items-center justify-items-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{

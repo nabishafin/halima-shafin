@@ -76,31 +76,29 @@ export function ClientsSection() {
 
   return (
     <section id="clients" className="data-scroll-section py-0 md:py-10 px-4">
-      <div className="w-full md:w-10/12 mx-auto">
+      <div className="w-full lg:w-11/12 mx-auto">
         {/* Title Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-center mb-12">
-          <div></div>
-
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center mb-12">
+          <div></div> {/* 1st column empty for spacing */}
           <motion.div
-            className="flex justify-center"
+            className="col-span-2 flex justify-center items-center"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h2 className="text-6xl md:text-[150px] font-bold text-black">
+            <h2 className="text-5xl md:text-[90px] lg:text-[120px] font-bold text-black leading-[1]">
               .Clients
             </h2>
           </motion.div>
-
           <motion.div
-            className="lg:text-right"
+            className="lg:text-right px-0 md:ml-10 flex items-center"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <p className="text-gray-500 text-lg max-w-sm lg:ml-auto font-semibold">
+            <p className="text-gray-500 text-sm max-w-sm lg:ml-auto font-medium leading-relaxed">
               From start ups to industry experts, we've helped over 470 leaders
               and companies show up online with clarity and quality.
             </p>
@@ -127,7 +125,7 @@ export function ClientsSection() {
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   {/* Header */}
-                  <div className="flex justify-between items-center  bg-white px-4 py-4 mb-2 rounded-lg shadow-sm">
+                  <div className="flex justify-between items-center bg-white px-4 py-4 mb-2 rounded-lg shadow-sm">
                     <div>
                       <h3 className="text-xl font-semibold text-black">
                         {item.name}

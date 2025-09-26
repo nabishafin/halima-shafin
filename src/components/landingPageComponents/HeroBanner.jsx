@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full py-28 md:py-16 overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -45,7 +45,7 @@ const HeroBanner = () => {
         </motion.h2>
 
         {/* "Here’s how:" aligned left with same width/padding as list */}
-        <p className="text-white text-xl font-semibold  text-left max-w-3xl w-full mx-auto px-2 mt-4">
+        <p className="text-white text-xl font-semibold  text-left max-w-3xl w-full mx-auto px-2 mt-4 ">
           Here’s how :
         </p>
 

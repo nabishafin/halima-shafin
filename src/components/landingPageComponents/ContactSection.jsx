@@ -77,7 +77,7 @@ export function ContactSection() {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full md:w-11/12 lg:w-10/12 mx-auto px-4 py-20">
+      <div className="relative z-10 w-full lg:w-11/12  mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[90vh]">
           {/* Contact Form */}
           <motion.div

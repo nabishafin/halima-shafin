@@ -40,11 +40,11 @@ export function StepsSection() {
   ];
 
   return (
-    <section id="you" className="px-7">
-      <div className="w-auto md:w-11/12 lg:w-10/12 mx-auto">
+    <section id="you" className="px-4">
+      <div className="w-auto lg:w-11/12 mx-auto">
         <div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
- gap-3"
+ gap-2"
         >
           {steps.map((step, index) => (
             <motion.div
