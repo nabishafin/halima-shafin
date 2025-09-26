@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
@@ -13,20 +14,101 @@ const HeroBanner = () => {
         playsInline
       />
 
-      {/* Dark Overlay with gradient for "ondoca" feel */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/40 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
+      {/* Dark Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/60 via-black/70 to-black/90"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
-        <h1 className="text-4xl md:text-6xl font-semibold mb-6 drop-shadow-lg leading-snug">
-          In a world drowning with <span className="font-bold">.Content</span>,
-          <br />
-          <span className="text-[#686868]">visibility beats ability.</span>
-        </h1>
-        <p className="text-lg md:text-2xl max-w-xl mb-8 drop-shadow-md">
-          Now is the time to get seen.
+      <motion.div
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 md:px-6 mx-auto md:pt-32 overflow-auto"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <motion.h1
+          className="text-white text-4xl  sm:text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+        >
+          Founded in London, collaborating worldwide
+        </motion.h1>
+
+        <motion.h2
+          className="text-[#9c9c9c] text-sm sm:text-base md:text-3xl font-semibold mb-2 max-w-full sm:max-w-3xl md:max-w-6xl mx-auto leading-relaxed px-2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+        >
+          The Re: Initiative—shaping brands through precision-driven strategy,
+          design, and creative direction. We ensure every solution is tailored
+          to make your brand resonate.
+        </motion.h2>
+
+        {/* "Here’s how:" aligned left with same width/padding as list */}
+        <p className="text-white text-xl font-semibold  text-left max-w-3xl w-full mx-auto px-2 mt-4">
+          Here’s how :
         </p>
-      </div>
+
+        {/* Solutions List */}
+        <motion.ul
+          className="text-white text-left max-w-3xl w-full mx-auto mt-2 space-y-3 text-xs sm:text-xs md:text-sm leading-relaxed px-2"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+            hidden: { opacity: 0 },
+          }}
+        >
+          {[
+            {
+              key: "01",
+              title: "Re-define",
+              desc: "We align your brand’s story, structure, and positioning so it speaks with clarity and intent.",
+            },
+            {
+              key: "02",
+              title: "Re-design",
+              desc: "From product to packaging, every detail is meticulously crafted to transform vision into assets that endure.",
+            },
+            {
+              key: "03",
+              title: "Re-present",
+              desc: "We translate your brand story into campaigns, content, and storytelling that cut through the noise.",
+            },
+            {
+              key: "04",
+              title: "Re-scale",
+              desc: "We design marketing and partnerships that turn visibility into market position, and position into measurable growth.",
+            },
+            {
+              key: "05",
+              title: "Re-structure",
+              desc: "Growth demands structure. We build systems that support long-term scale and brand integrity.",
+            },
+          ].map(({ key, title, desc }) => (
+            <motion.li
+              key={key}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 20 },
+              }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <p>
+                <strong>
+                  {key} — {title}:
+                </strong>{" "}
+                {desc}
+              </p>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
     </section>
   );
 };

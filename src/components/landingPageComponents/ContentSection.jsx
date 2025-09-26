@@ -29,15 +29,15 @@ export function ContentSection() {
 
           {/* Main heading */}
           <motion.h1
-            className="text-3xl md:text-4xl lg:text-6xl font-[700] text-balance leading-tight"
+            className="text-3xl md:text-4xl lg:text-6xl font-[700] text-balance leading-tight "
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <span className="text-black">You've got the ability,</span>{" "}
+            <span className="text-black">You’ve built the brand.</span>{" "}
             <span className="text-[#686868]">
-              but your Content isn't reflecting your brilliance.
+              We make it resonate with precision. Here’s how
             </span>
           </motion.h1>
         </div>
