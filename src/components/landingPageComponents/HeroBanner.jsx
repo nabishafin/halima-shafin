@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
-    <section className="relative w-full py-28 md:py-16 overflow-hidden">
+    <section className="relative w-full py-28 md:py-25 overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -51,7 +51,7 @@ const HeroBanner = () => {
 
         {/* Solutions List */}
         <motion.ul
-          className="text-white text-left max-w-3xl w-full mx-auto mt-2 space-y-3 text-xs sm:text-xs md:text-base leading-relaxed px-2"
+          className="text-white text-left max-w-3xl w-full mx-auto mt-2 space-y-1 text-xs sm:text-xs md:text-sm leading-relaxed px-2"
           initial="hidden"
           animate="visible"
           variants={{
