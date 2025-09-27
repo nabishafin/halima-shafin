@@ -28,7 +28,7 @@ export function TestimonialSection() {
 
   return (
     <section className="data-scroll-section py-16 px-4">
-      <div className="w-full md:w-10/12 mx-auto">
+      <div className="w-full lg:w-11/12 mx-auto">
         {/* Header */}
         <motion.div
           className="mb-12"
@@ -79,12 +79,14 @@ export function TestimonialSection() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <div className="text-lg text-gray-700 leading-relaxed">
+            <div className="text-lg text-[#686868] leading-relaxed font-bold">
               <p>
-                <strong>An incredibly talented group.</strong> Who perform at
-                high standards. I was impressed with the thoroughness of their
-                work, the creativity in their vision and sound storytelling. I'd
-                highly recommend.
+                <strong className="text-black">
+                  An incredibly talented group.
+                </strong>{" "}
+                Who perform at high standards. I was impressed with the
+                thoroughness of their work, the creativity in their vision and
+                sound storytelling. I'd highly recommend.
               </p>
             </div>
 
@@ -102,7 +104,7 @@ export function TestimonialSection() {
                     <CountUp
                       start={0}
                       end={inView ? stat.number : 0}
-                      duration={2}
+                      duration={15} // 20 seconds for each number
                       separator=","
                       suffix={stat.suffix}
                       redraw={true}
@@ -117,7 +119,7 @@ export function TestimonialSection() {
                   key={stat.id}
                   className="relative bg-white font-extrabold px-12 py-6 rounded-lg"
                 >
-                  <div className="text-sm text-gray-600 leading-tight text-end">
+                  <div className="text-sm text-black leading-tight text-end">
                     <p>{stat.title}</p>
                     <p>{stat.subtitle}</p>
                   </div>
@@ -137,7 +139,7 @@ export function TestimonialSection() {
                     <CountUp
                       start={0}
                       end={inView ? stat.number : 0}
-                      duration={2}
+                      duration={15} // 20 seconds for each number
                       separator=","
                       suffix={stat.suffix}
                       redraw={true}
@@ -152,7 +154,7 @@ export function TestimonialSection() {
                   key={stat.id}
                   className="relative bg-white font-extrabold px-12 py-6 rounded-lg"
                 >
-                  <div className="text-sm text-gray-600 leading-tight text-end">
+                  <div className="text-sm text-black leading-tight text-end">
                     {stat.title}
                     <p>{stat.subtitle}</p>
                   </div>

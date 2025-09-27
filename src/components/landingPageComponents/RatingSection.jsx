@@ -5,16 +5,21 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import customer1 from "../../../public/customer-6.jpg";
+import rating1 from "../../../public/rating-1.jpg";
+import rating2 from "../../../public/rating-2.webp";
+import rating3 from "../../../public/rating-3.webp";
+import RatingButton from "../ui/RatingButton";
+// import customer1 from "../../../public/customer-6.jpg";
+// import customer1 from "../../../public/customer-6.jpg";
 
 export function RatingSection() {
   useLocoScroll(); // Locomotive scroll enable
 
   // Sample user avatars - replace with real user images if available
-  const userAvatars = [customer1, customer1, customer1, customer1];
+  const userAvatars = [rating1, rating2, rating3];
 
   return (
-    <div className="data-scroll-section">
+    <div className="data-scroll-section py-0 md:py-10 px-4">
       <section className="w-full md:w-10/12 mx-auto rounded-2xl shadow-lg p-8 bg-white my-20">
         {/* Large Rating Display */}
         <motion.div
@@ -101,12 +106,7 @@ export function RatingSection() {
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <Button
-            className="bg-black hover:bg-black text-white py-3 px-8 rounded-xl font-medium w-full"
-            size="lg"
-          >
-            Google rating
-          </Button>
+          <RatingButton></RatingButton>
         </motion.div>
       </section>
     </div>
