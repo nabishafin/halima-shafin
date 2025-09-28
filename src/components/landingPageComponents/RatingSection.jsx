@@ -20,7 +20,7 @@ export function RatingSection() {
 
   return (
     <div className="data-scroll-section py-0 md:py-10 px-4">
-      <section className="w-full md:w-10/12 mx-auto rounded-2xl shadow-lg p-8 bg-white my-20">
+      <section className="w-full lg:w-11/12 mx-auto rounded-2xl shadow-lg p-8 bg-white my-20">
         {/* Large Rating Display */}
         <motion.div
           className="mb-8"
@@ -44,7 +44,7 @@ export function RatingSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* User Avatars */}
-          <div className="flex -space-x-2">
+          <div className="flex -space-x-2 overflow-x-auto md:overflow-visible">
             {userAvatars.map((avatar, index) => (
               <motion.div
                 key={index}

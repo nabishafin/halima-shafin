@@ -81,8 +81,8 @@ export function TeamSection() {
   return (
     <div className="data-scroll-section">
       <section className="py-0 md:py-16">
-        <div className="w-full md:w-10/12 mx-auto bg-white p-4 md:p-16 rounded-2xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="w-full lg:w-11/12 mx-auto bg-white p-4 md:p-16 rounded-2xl">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Left Content */}
             <motion.div
               className="space-y-8"
@@ -132,9 +132,9 @@ export function TeamSection() {
               </motion.div>
             </motion.div>
 
-            {/* Right Team Grid */}
+            {/* Right Team Grid - Larger images for tablet and desktop */}
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -142,18 +142,21 @@ export function TeamSection() {
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={member.id}
-                  className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[2/3] bg-gray-900 transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/40"
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl bg-gray-900 transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/40"
+                  style={{
+                    height: "350px", // Updated height for better responsiveness
+                  }}
                   onMouseEnter={() => setHoveredMember(member.id)}
                   onMouseLeave={() => setHoveredMember(null)}
                   custom={index}
                   variants={fadeUp}
                 >
-                  {/* Background Image */}
+                  {/* Background Image - Larger on tablet and desktop */}
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110" // Slightly more zoomed-in effect
                     priority={index < 2}
                   />
 
@@ -172,30 +175,37 @@ export function TeamSection() {
 
                   {/* Name - Always visible */}
                   <div className="absolute bottom-4 left-4 right-4 z-20">
-                    <h3 className="text-white text-2xl font-bold drop-shadow-lg">
+                    <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">
                       {member.name}
                     </h3>
                   </div>
 
                   {/* Hover Description */}
                   <div
-                    className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/90 to-transparent transition-all duration-500 ease-out transform ${
+                    className={`absolute inset-x-0 bottom-0 transition-all duration-500 ease-out transform ${
                       hoveredMember === member.id
                         ? "translate-y-0 opacity-100"
                         : "translate-y-full opacity-0"
                     }`}
-                    style={{ height: "70%" }}
+                    style={{
+                      height: "40%", // Reduced height for smaller description box
+                      background:
+                        "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 50%, transparent 100%)",
+                    }}
                   >
-                    <div className="absolute bottom-16 left-4 right-4 space-y-3">
-                      <div className="flex items-center gap-2">
+                    <div className="absolute bottom-16 left-4 right-4 space-y-3 h-3/4 flex flex-col justify-end">
+                      <div className="flex items-center gap-2 mb-2">
                         <div className="w-2 h-2 bg-white rounded-full opacity-80" />
                         <span className="text-white text-sm font-medium tracking-wide">
                           {member.role}
                         </span>
                       </div>
-                      <p className="text-white/90 text-sm leading-relaxed">
-                        {member.description}
-                      </p>
+                      {/* Adjusting the text size and removing scroll */}
+                      <div className="overflow-hidden">
+                        <p className="text-white/90 text-xs sm:text-xs leading-tight">
+                          {member.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
