@@ -2,164 +2,360 @@
 import bgImage from "../../../public/what-banner.png";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Plus, CirclePlus } from "lucide-react";
+import { Plus, CirclePlus, ChevronDown, ChevronUp } from "lucide-react";
 
 export function PricingSection() {
-  const [selectedTier, setSelectedTier] = useState("Halfday");
   const [packageType, setPackageType] = useState("Basic");
-  const [selectedService, setSelectedService] = useState("Podcasts");
+  const [selectedService, setSelectedService] = useState("Re-define");
+  const [expandedServices, setExpandedServices] = useState({});
 
   const services = [
-    "Talking Heads",
-    "Shorts",
-    "Podcasts",
-    "Event Reels",
-    "Adverts",
-    "Vlogs",
-    "Documentaries",
-    "Corporate events",
-    "Short films",
-    "Visualizers",
-    "Campaigns",
+    {
+      id: "Re-define",
+      name: "Re: Define",
+      type: "main",
+    },
+    {
+      id: "Re-design",
+      name: "Re: Design",
+      type: "main",
+    },
+    {
+      id: "Re-present",
+      name: "Re: Present",
+      type: "parent",
+      children: [
+        "Personal Branding",
+        "Podcasts",
+        "Product Content",
+        "Content Creation",
+        "Events",
+        "Campaign Films",
+      ],
+    },
+    {
+      id: "Re-scale",
+      name: "Re: Scale",
+      type: "main",
+    },
+    {
+      id: "Re-structure",
+      name: "Re: Structure",
+      type: "main",
+    },
   ];
 
+  const toggleServiceExpansion = (serviceId) => {
+    setExpandedServices((prev) => ({
+      ...prev,
+      [serviceId]: !prev[serviceId],
+    }));
+  };
+
+  const serviceData = {
+    "Re-define": {
+      description:
+        "Complete brand identity transformation to redefine your market presence and positioning.",
+      baseFeatures: [
+        "Naming & tagline",
+        "Voice & tone guide",
+        "Primary logo & visual system",
+        "Brand patterns & illustrations",
+        "Brand guidelines",
+        "Launch mockups",
+      ],
+      standardFeatures: [
+        "Market research",
+        "Brand strategy & DNA",
+        "Messaging framework",
+        "Storytelling system",
+        "Value proposition",
+        "Brand architecture",
+        "Social media templates",
+        "Investor / pitch decks",
+      ],
+      eliteFeatures: [
+        "Website design",
+        "Website development",
+        "SEO foundations",
+      ],
+    },
+    "Re-design": {
+      description:
+        "Comprehensive product design and packaging solutions to elevate your physical offerings.",
+      baseFeatures: ["Up to 2 product designs", "Up to 2 tech packs"],
+      standardFeatures: [
+        "Up to 5 product designs",
+        "Up to 5 tech packs",
+        "Full packaging suite",
+        "Up to 2 Surface pattern designs",
+        "Basic collateral design",
+        "Ongoing graphics support",
+      ],
+      eliteFeatures: [
+        "Ongoing product design",
+        "Ongoing tech pack design",
+        "Ongoing Surface pattern design",
+        "Complete packaging system",
+        "Advanced collateral design",
+        "Dedicated design oversight",
+      ],
+    },
+    // Re: Present Children Services
+    "Personal Branding": {
+      description:
+        "Professional personal branding content to establish your authority and presence.",
+      baseFeatures: [
+        "Professional headshots",
+        "Bio & profile optimization",
+        "Social media content strategy",
+        "Basic video introductions",
+        "1x revision per deliverable",
+        "Platform-specific formatting",
+      ],
+      standardFeatures: [
+        "30 min strategy call",
+        "Extended content package",
+        "Video testimonials",
+        "Professional lighting setup",
+        "2x revision per deliverable",
+        "Multi-platform adaptation",
+      ],
+      eliteFeatures: [
+        "Complete personal brand kit",
+        "Ongoing content creation",
+        "Media training session",
+        "Crisis management guide",
+        "Priority scheduling",
+        "Dedicated brand manager",
+      ],
+    },
+    Podcasts: {
+      description:
+        "End-to-end podcast production for professional audio and video content.",
+      baseFeatures: [
+        "Up to 4 hours shoot time",
+        "1x 45 min edited episode",
+        "1x revision",
+        "Captions",
+        "Includes equipment for 2 people",
+        "Audio enhancement",
+      ],
+      standardFeatures: [
+        "Video podcast option",
+        "Custom intro/outro",
+        "Advanced audio mastering",
+        "2x revision per episode",
+        "Social media clips",
+        "Multi-camera setup",
+      ],
+      eliteFeatures: [
+        "Transcript included",
+        "Distribution support",
+        "Live streaming setup",
+        "Guest coordination",
+        "Performance analytics",
+        "Season planning",
+      ],
+    },
+    "Product Content": {
+      description:
+        "Professional product showcasing content for e-commerce and marketing.",
+      baseFeatures: [
+        "Product photography",
+        "Basic video demonstrations",
+        "Feature highlight reels",
+        "1x revision per product",
+        "White background shots",
+        "Multi-angle coverage",
+      ],
+      standardFeatures: [
+        "Lifestyle integration",
+        "Advanced lighting setup",
+        "2x revision per product",
+        "Comparison videos",
+        "User testimonial integration",
+        "Packaging showcase",
+      ],
+      eliteFeatures: [
+        "3D product visualization",
+        "Interactive content",
+        "AR integration ready",
+        "Complete product launch kit",
+        "International adaptation",
+        "Ongoing product updates",
+      ],
+    },
+    "Content Creation": {
+      description:
+        "Strategic content creation for digital platforms and marketing campaigns.",
+      baseFeatures: [
+        "Monthly content calendar",
+        "Basic graphic templates",
+        "Social media posts",
+        "1x revision per content",
+        "Platform optimization",
+        "Performance tracking",
+      ],
+      standardFeatures: [
+        "Advanced content strategy",
+        "Custom graphics package",
+        "Video content integration",
+        "2x revision per content",
+        "A/B testing versions",
+        "Audience engagement analysis",
+      ],
+      eliteFeatures: [
+        "Complete content ecosystem",
+        "AI content optimization",
+        "Multi-platform automation",
+        "Real-time analytics dashboard",
+        "Competitor analysis",
+        "Content repurposing system",
+      ],
+    },
+    Events: {
+      description:
+        "Comprehensive event coverage and promotional content creation.",
+      baseFeatures: [
+        "Event photography coverage",
+        "Highlight reel (up to 2 mins)",
+        "Social media snippets",
+        "1x revision per deliverable",
+        "Basic editing",
+        "Quick turnaround",
+      ],
+      standardFeatures: [
+        "Multi-camera setup",
+        "Extended coverage time",
+        "Live social media updates",
+        "2x revision per deliverable",
+        "Drone footage",
+        "Interview recordings",
+      ],
+      eliteFeatures: [
+        "Full event documentary",
+        "Real-time editing",
+        "Virtual event integration",
+        "Post-event analysis",
+        "Sponsor highlight packages",
+        "Year-round event partnership",
+      ],
+    },
+    "Campaign Films": {
+      description:
+        "Professional campaign video production for marketing and brand initiatives.",
+      baseFeatures: [
+        "Up to 60 sec campaign video",
+        "Script development",
+        "Basic storyboarding",
+        "1x revision",
+        "Multi-platform formatting",
+        "Music licensing",
+      ],
+      standardFeatures: [
+        "Extended video length",
+        "Advanced storytelling",
+        "Professional voiceover",
+        "2x revision",
+        "Custom animation elements",
+        "A/B testing versions",
+      ],
+      eliteFeatures: [
+        "Complete campaign package",
+        "Celebrity/influencer integration",
+        "International adaptation",
+        "Performance tracking setup",
+        "Ongoing optimization",
+        "Dedicated campaign manager",
+      ],
+    },
+    "Re-scale": {
+      description:
+        "Strategic growth marketing and scaling solutions to expand your digital footprint.",
+      baseFeatures: [
+        "Growth audit & strategy",
+        "Basic SEO",
+        "2 Social media management",
+        "4 email campaigns / month",
+        "Influencer roadmap",
+        "Growth reporting",
+      ],
+      standardFeatures: [
+        "Core SEO",
+        "3 Social media management",
+        "Paid ads",
+        "8 email campaigns / month",
+        "Influencer outreach & partnerships",
+        "Community management",
+        "PR management",
+        "Growth reporting & analytics",
+      ],
+      eliteFeatures: [
+        "Advanced SEO",
+        "Multi-channel paid ads",
+        "High-frequency social media management",
+        "CRM-linked email marketing",
+        "Influencer + PR campaigns",
+        "Conversion optimisation (CRO)",
+        "Event activations",
+        "Growth reporting & analytics",
+      ],
+    },
+    "Re-structure": {
+      description:
+        "Operational transformation and systems implementation for sustainable business growth.",
+      baseFeatures: [
+        "Operations audit",
+        "Workflow streamlining",
+        "CRM / inventory / PM setup",
+        "Supply chain health check",
+        "Basic reporting",
+      ],
+      standardFeatures: [
+        "Full systems implementation",
+        "Supply chain consulting",
+        "Production optimisation",
+        "Advanced dashboards",
+        "Team workflow design",
+      ],
+      eliteFeatures: [
+        "End-to-end restructure",
+        "Supply chain transformation",
+        "Team scaling & training",
+        "ERP & automation rollouts",
+        "Digital transformation",
+        "Crisis & risk advisory",
+        "Ongoing ops leadership",
+      ],
+    },
+  };
+
   const getServiceContent = () => {
-    const tierMultiplier = selectedTier === "Halfday" ? 5 : 10;
     const isBasic = packageType === "Basic";
     const isStandard = packageType === "Standard";
     const isElite = packageType === "Elite";
 
-    const serviceData = {
-      "Talking Heads": {
-        description: `${tierMultiplier}x High quality talking head videos, professionally shot to establish your brand authority.`,
-        baseFeatures: [
-          "Up to 60 secs per clip",
-          "4 hours batch shooting",
-          "Colour correction",
-          "Audio enhancement",
-          "1x revision per clip",
-          "Captions",
-        ],
-        standardFeatures: [
-          "30 min strategy call",
-          "2x revision per clip",
-          "Up to 90 secs per clip",
-        ],
-        eliteFeatures: [
-          "Professional lighting",
-          "Multiple angles",
-          "Custom graphics",
-          "Priority support",
-        ],
-      },
-      Shorts: {
-        description: `${tierMultiplier}x High quality short form videos, batch produced to help you maintain consistent output.`,
-        baseFeatures: [
-          "Up to 60 secs per clip",
-          "4 hours batch shooting",
-          "Colour correction",
-          "Audio enhancement",
-          "Captions",
-        ],
-        standardFeatures: [
-          "30 min strategy call",
-          "2x revision per clip",
-          "Up to 90 secs per clip",
-        ],
-        eliteFeatures: [
-          "Music",
-          "Basic Animation",
-          "B-rolls",
-          "Advanced editing",
-        ],
-      },
-      Podcasts: {
-        description: `${tierMultiplier} High quality end-end video and audio podcast production.`,
-        baseFeatures: [
-          "Up to 4 hours shoot time",
-          "1x 45 min edited episode",
-          "1x revision",
-          "Captions",
-          "Includes equipment for 2 people",
-        ],
-        standardFeatures: [
-          "Video podcast option",
-          "Custom intro/outro",
-          "Advanced audio mastering",
-        ],
-        eliteFeatures: [
-          "Transcript included",
-          "Social media clips",
-          "Distribution support",
-          "Live streaming setup",
-        ],
-      },
-      "Event Reels": {
-        description: `${tierMultiplier}x Dynamic event highlight reels capturing your most important moments.`,
-        baseFeatures: [
-          "Up to 2 mins per reel",
-          "Multi-camera editing",
-          "Colour correction",
-          "Audio sync",
-          "1x revision per reel",
-          "Music licensing",
-        ],
-        standardFeatures: [
-          "Drone footage",
-          "Same-day delivery",
-          "Live streaming setup",
-        ],
-        eliteFeatures: [
-          "Multiple format delivery",
-          "Custom graphics package",
-          "Extended coverage",
-          "Priority editing",
-        ],
-      },
-      Adverts: {
-        description: `${tierMultiplier}x Professional advertisement videos designed to convert viewers into customers.`,
-        baseFeatures: [
-          "Up to 30 secs per ad",
-          "Script consultation",
-          "Professional voiceover",
-          "Brand alignment",
-          "1x revision per ad",
-          "Multiple formats",
-        ],
-        standardFeatures: [
-          "A/B testing versions",
-          "Advanced animations",
-          "Custom music",
-        ],
-        eliteFeatures: [
-          "Performance analytics",
-          "Platform optimization",
-          "Extended versions",
-          "Dedicated account manager",
-        ],
-      },
-    };
-
     const defaultData = {
-      description: `${tierMultiplier}x High quality videos professionally produced for your business needs.`,
+      description:
+        "Professional business transformation services tailored to your growth needs.",
       baseFeatures: [
-        "Professional production",
-        "Quality editing",
-        "Colour correction",
-        "Audio enhancement",
+        "Initial consultation",
+        "Basic strategy development",
+        "Core implementation",
+        "Progress reporting",
         "1x revision",
         "Final delivery",
       ],
       standardFeatures: [
         "Priority support",
-        "Advanced editing",
-        "Custom graphics",
+        "Advanced features",
+        "Extended consulting",
       ],
       eliteFeatures: [
         "Extended revisions",
         "Rush delivery",
-        "Consultation included",
+        "Comprehensive consultation",
         "Dedicated support",
       ],
     };
@@ -175,32 +371,14 @@ export function PricingSection() {
       description:
         data.description +
         (isElite
-          ? " Premium quality with advanced editing."
+          ? " Premium comprehensive solution with ongoing support."
           : isStandard
-          ? " Enhanced with professional features."
-          : " Essential features for getting started."),
+          ? " Enhanced with advanced features and extended services."
+          : " Essential foundation for getting started."),
       features,
     };
   };
 
-  const basePrices = { Halfday: 500, Fullday: 900 };
-
-  const getMultiplier = () => {
-    switch (packageType) {
-      case "Basic":
-        return 0.8;
-      case "Standard":
-        return 1;
-      case "Elite":
-        return 1.5;
-      default:
-        return 1;
-    }
-  };
-
-  const getPrice = () => Math.round(basePrices[selectedTier] * getMultiplier());
-
-  const tiers = ["Halfday", "Fullday"];
   const content = getServiceContent();
 
   return (
@@ -245,22 +423,6 @@ export function PricingSection() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 md:mb-8">
           <h2 className="text-lg md:text-xl font-medium">Services</h2>
 
-          <div className="flex gap-2 md:gap-4 flex-wrap justify-center">
-            {tiers.map((tier) => (
-              <button
-                key={tier}
-                onClick={() => setSelectedTier(tier)}
-                className={`px-4 md:px-6 py-2 rounded-full text-sm md:text-lg font-medium transition-all ${
-                  selectedTier === tier
-                    ? "bg-white text-black"
-                    : "text-white hover:text-gray-300"
-                }`}
-              >
-                {tier}
-              </button>
-            ))}
-          </div>
-
           <div className="flex gap-2 flex-wrap justify-center">
             {["Basic", "Standard", "Elite"].map((type) => (
               <button
@@ -282,18 +444,53 @@ export function PricingSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Services List */}
           <div className="bg-[#161616] rounded-2xl p-4 md:p-6 space-y-2 md:space-y-4">
-            {services.map((service, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedService(service)}
-                className={`text-base md:text-lg text-left w-full transition-colors ${
-                  selectedService === service
-                    ? "text-orange-400 font-medium"
-                    : "text-white hover:text-orange-300"
-                }`}
-              >
-                {service}
-              </button>
+            {services.map((service) => (
+              <div key={service.id} className="space-y-2">
+                <button
+                  onClick={() => {
+                    if (service.type === "parent") {
+                      toggleServiceExpansion(service.id);
+                    } else {
+                      setSelectedService(service.id);
+                    }
+                  }}
+                  className={`text-base md:text-lg text-left w-full transition-colors flex items-center justify-between ${
+                    selectedService === service.id
+                      ? "text-orange-400 font-medium"
+                      : "text-white hover:text-orange-300"
+                  }`}
+                >
+                  <span>{service.name}</span>
+                  {service.type === "parent" && (
+                    <span className="ml-2">
+                      {expandedServices[service.id] ? (
+                        <ChevronUp size={16} />
+                      ) : (
+                        <ChevronDown size={16} />
+                      )}
+                    </span>
+                  )}
+                </button>
+
+                {/* Child Services */}
+                {service.type === "parent" && expandedServices[service.id] && (
+                  <div className="ml-4 space-y-2 border-l-2 border-gray-600 pl-4">
+                    {service.children.map((childService) => (
+                      <button
+                        key={childService}
+                        onClick={() => setSelectedService(childService)}
+                        className={`text-sm md:text-base text-left w-full transition-colors block ${
+                          selectedService === childService
+                            ? "text-orange-400 font-medium"
+                            : "text-gray-400 hover:text-orange-300"
+                        }`}
+                      >
+                        {childService}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -305,37 +502,29 @@ export function PricingSection() {
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                   {content.description}
                 </p>
-                <div className="text-xl md:text-2xl font-bold text-white">
-                  ${getPrice()}
-                </div>
 
-                <div className="flex gap-2 md:gap-4 flex-wrap">
-                  <Button
-                    variant="outline"
-                    className="border-gray-600 text-gray-300 hover:bg-white hover:text-black bg-transparent rounded-full px-4 py-2 text-sm"
-                  >
-                    Example
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="border-gray-600 text-gray-300 hover:bg-white hover:text-black bg-transparent rounded-full px-4 py-2 text-sm"
-                  >
-                    How it works
-                  </Button>
-                </div>
+                {/* Removed price display and buttons */}
               </div>
 
               {/* Features */}
               <div className="space-y-2 md:space-y-4">
                 {content.features.map((feature, index) => {
+                  const currentServiceData = serviceData[selectedService];
+                  const baseLength =
+                    currentServiceData?.baseFeatures?.length || 0;
+                  const standardLength =
+                    currentServiceData?.standardFeatures?.length || 0;
+                  const eliteLength =
+                    currentServiceData?.eliteFeatures?.length || 0;
+
                   const isStandardFeature =
                     (packageType === "Standard" || packageType === "Elite") &&
-                    index >=
-                      content.features.length -
-                        (packageType === "Elite" ? 6 : 3);
+                    index >= baseLength &&
+                    index < baseLength + standardLength;
+
                   const isEliteFeature =
                     packageType === "Elite" &&
-                    index >= content.features.length - 3;
+                    index >= baseLength + standardLength;
 
                   return (
                     <div
@@ -395,8 +584,8 @@ export function PricingSection() {
             Add a 30min strategy session in our elite package
           </span>{" "}
           <span className="text-[#8c8989] ">
-            to strengthen your project. We’ll shape a solution that fits your
-            business, not ours. Dark gradiend background
+            to strengthen your project. We'll shape a solution that fits your
+            business, not ours. Dark gradient background
           </span>
         </motion.h1>
       </div>
