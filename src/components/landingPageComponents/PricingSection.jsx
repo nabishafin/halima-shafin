@@ -559,7 +559,7 @@ export function PricingSection() {
                           isEliteFeature
                             ? "text-orange-400"
                             : isStandardFeature
-                            ? "text-blue-400"
+                            ? "text-[#edd8c5]"
                             : "text-white"
                         }`}
                       >
@@ -602,7 +602,7 @@ export function PricingSection() {
           </span>{" "}
           <span className="text-[#8c8989] ">
             to strengthen your project. We'll shape a solution that fits your
-            business, not ours. Dark gradient background
+            business, not ours.
           </span>
         </motion.h1>
       </div>

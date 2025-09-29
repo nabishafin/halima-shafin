@@ -7,9 +7,9 @@ import useLocoScroll from "@/hooks/useLocoScroll";
 
 const faqData = [
   {
-    question: "What is Consultridge?",
+    question: "What is Re: Initiative?",
     answer:
-      "Consultridge is a strategy-first content creation agency built for busy entrepreneurs and modern brands who want high-quality video content without the hassle.",
+      "Re: Initiative is a strategy-first content creation agency built for busy entrepreneurs and modern brands who want high-quality video content without the hassle.",
   },
   {
     question: "What types of content do you produce?",
@@ -22,7 +22,7 @@ const faqData = [
       "Our process begins with a discovery call to understand your goals, followed by strategic planning, content creation, and post-production. We handle everything from concept development to final delivery, ensuring a seamless experience for our clients.",
   },
   {
-    question: "What makes Consultridge different?",
+    question: "What makes Re: Initiative different?",
     answer:
       "We take a strategy-first approach, focusing on understanding your business objectives before creating content. Our team combines creative expertise with business acumen to deliver content that not only looks great but drives real results for your brand.",
   },
