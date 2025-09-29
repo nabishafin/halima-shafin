@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -58,20 +57,16 @@ const Navbar = () => {
       <nav className="text-white">
         <div className="mx-auto w-auto md:w-10/12 px-6 py-6">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="text-2xl font-bold flex-shrink-0">
-              <Image
-                src="/logo.jpg"
-                alt="Logo"
-                width={120}
-                height={60}
-                priority
-                className="h-12 w-auto"
-              />
+            {/* Video Logo */}
+            <div className="text-3xl font-bold flex-shrink-0 ">
+              <div className="flex gap-1 items-center justify-center">
+                <div className="border-3 px-1 ">Re:</div>
+                <div>interactive</div>
+              </div>
             </div>
 
             {/* Desktop Navigation - Centered */}
-            <div className="hidden md:flex items-center space-x-16 text-sm font-medium">
+            <div className="hidden md:flex items-center space-x-32 text-xl font-semibold">
               <button
                 className="hover:text-gray-300 transition-colors cursor-pointer"
                 onClick={() => scrollToSection("#you")}
