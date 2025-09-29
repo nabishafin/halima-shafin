@@ -18,14 +18,7 @@ export function ContentSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="">
-              <CirclePlus className="w-6 h-6 text-black" />
-            </div>
-            <span className="text-md md:text-2xl font-[600] text-[#686868]">
-              We've met you before
-            </span>
-          </motion.div>
+          ></motion.div>
 
           {/* Main heading */}
           <motion.h1
@@ -35,9 +28,9 @@ export function ContentSection() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <span className="text-black">You’ve built the brand.</span>{" "}
+            <span className="text-black ">You’ve built the brand.</span> <br />{" "}
             <span className="text-[#686868]">
-              We make it resonate with precision. Here’s how
+              We make it resonate with precision.
             </span>
           </motion.h1>
         </div>

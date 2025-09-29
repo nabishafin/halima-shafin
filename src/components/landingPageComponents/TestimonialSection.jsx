@@ -104,7 +104,7 @@ export function TestimonialSection() {
                     <CountUp
                       start={0}
                       end={inView ? stat.number : 0}
-                      duration={15} // 20 seconds for each number
+                      duration={30} // 20 seconds for each number
                       separator=","
                       suffix={stat.suffix}
                       redraw={true}

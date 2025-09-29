@@ -4,7 +4,7 @@ import { CompanyLogos } from "@/components/landingPageComponents/CompanyLogos";
 import { ContentSection } from "@/components/landingPageComponents/ContentSection";
 import HeroBanner from "@/components/landingPageComponents/HeroBanner";
 import { StepsSection } from "@/components/landingPageComponents/StepsSection";
-import { ClientsSection } from "@/components/landingPageComponents/ClientsSection";
+// import { ClientsSection } from "@/components/landingPageComponents/ClientsSection";
 import { TestimonialSection } from "@/components/landingPageComponents/TestimonialSection";
 import { WhatWeDoSection } from "@/components/landingPageComponents/WhatWeDoSection";
 import { RatingSection } from "@/components/landingPageComponents/RatingSection";
@@ -23,7 +23,7 @@ const LandingPage = () => {
       <ContentSection />
       <StepsSection />
       <CompanyLogos />
-      <ClientsSection />
+      {/* <ClientsSection /> */}
       <TestimonialSection />
       <WhatWeDoSection />
       <RatingSection />

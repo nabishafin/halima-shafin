@@ -9,11 +9,12 @@ export function WhatWeDoSection() {
   useLocoScroll();
 
   const services = [
-    { name: "Re-define", id: "Re-define" },
-    { name: "Re-design", id: "Re-design" },
-    { name: "Re-present", id: "Re-present" },
-    { name: "Re-scale", id: "Re-scale" },
-    { name: "Re-structure", id: "Re-structure" },
+    { name: "Re: Define", id: "Re-define" },
+    { name: "Re: Design", id: "Re-design" },
+    { name: "Re: Present", id: "Re-present" },
+    { name: "Re: Scale", id: "Re-scale" },
+    { name: "Re: Structure", id: "Re-structure" },
+    { name: "More", id: "more" },
   ];
 
   const fadeUp = {
