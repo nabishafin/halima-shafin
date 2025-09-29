@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
-    <section className="relative w-full py-28 md:py-25 overflow-hidden">
+    <section className="relative w-full py-28 md:py-44 overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
