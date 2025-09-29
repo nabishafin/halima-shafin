@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HeroBanner = () => {
   return (
-    <section className="relative w-full py-28 md:py-44 overflow-hidden">
+    <section className="relative w-full py-28 md:py-80 overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -25,7 +25,7 @@ const HeroBanner = () => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.h1
-          className="text-white text-4xl  sm:text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
+          className="text-white text-4xl  sm:text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
@@ -39,15 +39,12 @@ const HeroBanner = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
         >
-          The Re: Initiative—shaping brands through precision-driven strategy,
-          design, and creative direction. We ensure every solution is tailored
-          to make your brand resonate.
+          The Re: Initiative is a boutique consultancy shaping brands through
+          strategy, design, and creative direction, with every solution
+          meticulously tailored.
         </motion.h2>
 
         {/* "Here’s how:" aligned left with same width/padding as list */}
-        <p className="text-white text-xl font-semibold  text-left max-w-3xl w-full mx-auto px-2 mt-4 ">
-          Here’s how :
-        </p>
 
         {/* Solutions List */}
         <motion.ul
@@ -63,51 +60,7 @@ const HeroBanner = () => {
             },
             hidden: { opacity: 0 },
           }}
-        >
-          {[
-            {
-              key: "01",
-              title: "Re-define",
-              desc: "We align your brand’s story, structure, and positioning so it speaks with clarity and intent.",
-            },
-            {
-              key: "02",
-              title: "Re-design",
-              desc: "From product to packaging, every detail is meticulously crafted to transform vision into assets that endure.",
-            },
-            {
-              key: "03",
-              title: "Re-present",
-              desc: "We translate your brand story into campaigns, content, and storytelling that cut through the noise.",
-            },
-            {
-              key: "04",
-              title: "Re-scale",
-              desc: "We design marketing and partnerships that turn visibility into market position, and position into measurable growth.",
-            },
-            {
-              key: "05",
-              title: "Re-structure",
-              desc: "Growth demands structure. We build systems that support long-term scale and brand integrity.",
-            },
-          ].map(({ key, title, desc }) => (
-            <motion.li
-              key={key}
-              variants={{
-                visible: { opacity: 1, y: 0 },
-                hidden: { opacity: 0, y: 20 },
-              }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <p>
-                <strong>
-                  {key} — {title}:
-                </strong>{" "}
-                {desc}
-              </p>
-            </motion.li>
-          ))}
-        </motion.ul>
+        ></motion.ul>
       </motion.div>
     </section>
   );
