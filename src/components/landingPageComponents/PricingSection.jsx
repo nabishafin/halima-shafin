@@ -1,6 +1,6 @@
 "use client";
 import bgImage from "../../../public/what-banner.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Plus, CirclePlus, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -8,6 +8,30 @@ export function PricingSection() {
   const [packageType, setPackageType] = useState("Basic");
   const [selectedService, setSelectedService] = useState("Re-define");
   const [expandedServices, setExpandedServices] = useState({});
+
+  // Listen for service selection events from WhatWeDoSection
+  useEffect(() => {
+    const handleServiceSelect = (event) => {
+      const { serviceId } = event.detail;
+
+      // Check if it's a parent service (Re-present)
+      const parentService = services.find((s) => s.id === "Re-present");
+      if (parentService && parentService.children.includes(serviceId)) {
+        // Expand Re-present and select the child
+        setExpandedServices((prev) => ({ ...prev, "Re-present": true }));
+        setSelectedService(serviceId);
+      } else {
+        // Select the service directly
+        setSelectedService(serviceId);
+      }
+    };
+
+    window.addEventListener("selectService", handleServiceSelect);
+
+    return () => {
+      window.removeEventListener("selectService", handleServiceSelect);
+    };
+  }, []);
 
   const services = [
     {
@@ -101,7 +125,6 @@ export function PricingSection() {
         "Dedicated design oversight",
       ],
     },
-    // Re: Present Children Services
     "Personal Branding": {
       description:
         "Professional personal branding content to establish your authority and presence.",
@@ -502,8 +525,6 @@ export function PricingSection() {
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                   {content.description}
                 </p>
-
-                {/* Removed price display and buttons */}
               </div>
 
               {/* Features */}
@@ -514,8 +535,6 @@ export function PricingSection() {
                     currentServiceData?.baseFeatures?.length || 0;
                   const standardLength =
                     currentServiceData?.standardFeatures?.length || 0;
-                  const eliteLength =
-                    currentServiceData?.eliteFeatures?.length || 0;
 
                   const isStandardFeature =
                     (packageType === "Standard" || packageType === "Elite") &&
@@ -556,7 +575,6 @@ export function PricingSection() {
       </div>
 
       <div className="w-full md:w-10/12 mx-auto text-center mt-16">
-        {/* Top indicator */}
         <motion.div
           className="flex items-center justify-start gap-2 mb-5"
           initial={{ opacity: 0, y: 30 }}
@@ -572,7 +590,6 @@ export function PricingSection() {
           </span>
         </motion.div>
 
-        {/* Main heading */}
         <motion.h1
           className="text-2xl md:text-4xl  font-[700] text-balance leading-tight md:px-60 px-0"
           initial={{ opacity: 0, y: 50 }}

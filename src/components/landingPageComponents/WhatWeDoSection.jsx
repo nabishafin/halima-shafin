@@ -3,19 +3,17 @@
 import useLocoScroll from "@/hooks/useLocoScroll";
 import { motion } from "framer-motion";
 import { CirclePlus } from "lucide-react";
-
-// ✅ Dynamic import করা হলো
 import bgImage from "../../../public/what-banner.png";
 
 export function WhatWeDoSection() {
-  useLocoScroll(); // optional for smooth scrolling
+  useLocoScroll();
 
   const services = [
-    "Re-define",
-    "Re-design",
-    "Re-present",
-    "Re-scale",
-    "Re-scale",
+    { name: "Re-define", id: "Re-define" },
+    { name: "Re-design", id: "Re-design" },
+    { name: "Re-present", id: "Re-present" },
+    { name: "Re-scale", id: "Re-scale" },
+    { name: "Re-structure", id: "Re-structure" },
   ];
 
   const fadeUp = {
@@ -23,17 +21,32 @@ export function WhatWeDoSection() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const handleServiceClick = (serviceId) => {
+    // Navigate to pricing section
+    const pricingSection = document.getElementById("pricing");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" });
+
+      // Wait for scroll to complete, then trigger service selection
+      setTimeout(() => {
+        // Dispatch custom event to PricingSection
+        const event = new CustomEvent("selectService", {
+          detail: { serviceId },
+        });
+        window.dispatchEvent(event);
+      }, 800);
+    }
+  };
+
   return (
     <section
       id="us"
       className="relative text-white py-16 px-4 md:py-24 data-scroll-section bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${bgImage.src})` }} // ✅ dynamic image use
+      style={{ backgroundImage: `url(${bgImage.src})` }}
     >
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative w-full lg:w-11/12 mx-auto">
-        {/* Motion wrapper for content */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -58,7 +71,7 @@ export function WhatWeDoSection() {
 
             <div className="space-y-3 text-[#e0e0e0] text-md leading-relaxed">
               <p>
-                At The Re: Initiative, we don’t just produce content — we build
+                At The Re: Initiative, we don't just produce content — we build
                 brand systems. Our model is designed for founders and companies
                 who want more than visibility: they want presence, clarity, and
                 growth.
@@ -70,7 +83,7 @@ export function WhatWeDoSection() {
                 consistently, distinctively, and with intent.
               </p>
               <p>
-                We close the gap between your brand’s vision and its execution,
+                We close the gap between your brand's vision and its execution,
                 so your story is seen, heard, and remembered.
               </p>
             </div>
@@ -79,9 +92,10 @@ export function WhatWeDoSection() {
               {services.map((service, index) => (
                 <button
                   key={index}
-                  className="bg-white text-black px-4 py-3 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center"
+                  onClick={() => handleServiceClick(service.id)}
+                  className="bg-white text-black px-4 py-3 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors text-center cursor-pointer"
                 >
-                  {service}
+                  {service.name}
                 </button>
               ))}
             </div>
@@ -110,7 +124,7 @@ export function WhatWeDoSection() {
               <div className="flex flex-col lg:flex-row gap-8">
                 <div className="lg:w-[60%] space-y-4 md:space-y-4 text-[#e0e0e0] text-md md:text-base leading-relaxed">
                   <p>
-                    At The Re: Initiative, we don’t just produce content — we
+                    At The Re: Initiative, we don't just produce content — we
                     build brand systems. Our model is designed for founders and
                     companies who want more than visibility: they want presence,
                     clarity, and growth.
@@ -122,7 +136,7 @@ export function WhatWeDoSection() {
                     consistently, distinctively, and with intent.
                   </p>
                   <p>
-                    We close the gap between your brand’s vision and its
+                    We close the gap between your brand's vision and its
                     execution, so your story is seen, heard, and remembered.
                   </p>
                 </div>
@@ -132,9 +146,10 @@ export function WhatWeDoSection() {
                     {services.map((service, index) => (
                       <button
                         key={index}
-                        className="bg-white text-black px-6 py-[7px] font-bold rounded-full text-sm hover:bg-gray-100 transition-colors text-center"
+                        onClick={() => handleServiceClick(service.id)}
+                        className="bg-white text-black px-6 py-[7px] font-bold rounded-full text-sm hover:bg-gray-100 transition-colors text-center cursor-pointer"
                       >
-                        {service}
+                        {service.name}
                       </button>
                     ))}
                   </div>
