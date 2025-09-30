@@ -6,6 +6,7 @@ import Navbar from "@/components/sheared/Navbar";
 import { Footer } from "@/components/sheared/Footer";
 import useLocoScroll from "@/hooks/useLocoScroll";
 import FixedButton from "@/components/ui/FixedButton";
+import Link from "next/link";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -25,7 +26,10 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </div>
-        <FixedButton />
+        {/* Added passHref to correctly pass href to FixedButton */}
+        <Link href="/meeting" passHref>
+          <FixedButton />
+        </Link>
       </body>
     </html>
   );

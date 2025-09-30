@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -58,12 +59,12 @@ const Navbar = () => {
         <div className="mx-auto w-auto md:w-10/12 px-6 py-6">
           <div className="flex items-center justify-between">
             {/* Video Logo */}
-            <div className="text-3xl font-bold flex-shrink-0 ">
+            <Link href={"/"} className="text-3xl font-bold flex-shrink-0 ">
               <div className="flex gap-1 items-center justify-center">
                 <div className="border-3 px-1 ">Re:</div>
                 <div>interactive</div>
               </div>
-            </div>
+            </Link>
 
             {/* Desktop Navigation - Centered */}
             <div className="hidden md:flex items-center space-x-32 text-xl font-semibold">

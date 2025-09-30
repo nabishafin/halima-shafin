@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import useLocoScroll from "@/hooks/useLocoScroll";
 
 // Import all logos
 import img1 from "../../../public/company-1.avif";
@@ -17,8 +16,6 @@ import img9 from "../../../public/company-9.avif";
 import img10 from "../../../public/company-10.avif";
 
 export function CompanyLogos() {
-  useLocoScroll(); // Optional for smooth scrolling
-
   const companies = [
     // Top row
     [
@@ -41,7 +38,7 @@ export function CompanyLogos() {
   ];
 
   return (
-    <section className="py- px-4 data-scroll-section mt-16">
+    <section className="py-  mt-16">
       <div className="w-full lg:w-11/12 mx-auto text-center">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-16 text-black"

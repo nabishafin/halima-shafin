@@ -12,6 +12,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import useLocoScroll from "@/hooks/useLocoScroll";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const teamMembers = [
   {
@@ -126,9 +127,11 @@ export function TeamSection() {
                   </p>
                 </div>
 
-                <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-base font-medium transition-colors">
-                  Join us
-                </Button>
+                <Link href={"/meeting"}>
+                  <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-base font-medium transition-colors">
+                    Join us
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
 

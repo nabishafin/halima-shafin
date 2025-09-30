@@ -1,49 +1,33 @@
 "use client";
-import bgImage from "../../../public/what-banner.png";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Plus, CirclePlus, ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
 
 export function PricingSection() {
   const [packageType, setPackageType] = useState("Basic");
   const [selectedService, setSelectedService] = useState("Re-define");
   const [expandedServices, setExpandedServices] = useState({});
 
-  // Listen for service selection events from WhatWeDoSection
   useEffect(() => {
     const handleServiceSelect = (event) => {
       const { serviceId } = event.detail;
-
-      // Check if it's a parent service (Re-present)
       const parentService = services.find((s) => s.id === "Re-present");
       if (parentService && parentService.children.includes(serviceId)) {
-        // Expand Re-present and select the child
         setExpandedServices((prev) => ({ ...prev, "Re-present": true }));
         setSelectedService(serviceId);
       } else {
-        // Select the service directly
         setSelectedService(serviceId);
       }
     };
 
     window.addEventListener("selectService", handleServiceSelect);
-
-    return () => {
+    return () =>
       window.removeEventListener("selectService", handleServiceSelect);
-    };
   }, []);
 
   const services = [
-    {
-      id: "Re-define",
-      name: "Re: Define",
-      type: "main",
-    },
-    {
-      id: "Re-design",
-      name: "Re: Design",
-      type: "main",
-    },
+    { id: "Re-define", name: "Re: Define", type: "main" },
+    { id: "Re-design", name: "Re: Design", type: "main" },
     {
       id: "Re-present",
       name: "Re: Present",
@@ -57,16 +41,8 @@ export function PricingSection() {
         "Campaign Films",
       ],
     },
-    {
-      id: "Re-scale",
-      name: "Re: Scale",
-      type: "main",
-    },
-    {
-      id: "Re-structure",
-      name: "Re: Structure",
-      type: "main",
-    },
+    { id: "Re-scale", name: "Re: Scale", type: "main" },
+    { id: "Re-structure", name: "Re: Structure", type: "main" },
   ];
 
   const toggleServiceExpansion = (serviceId) => {
@@ -384,7 +360,6 @@ export function PricingSection() {
     };
 
     const data = serviceData[selectedService] || defaultData;
-
     let features = [...data.baseFeatures];
     if (isStandard || isElite)
       features = [...features, ...data.standardFeatures];
@@ -405,48 +380,30 @@ export function PricingSection() {
   const content = getServiceContent();
 
   return (
-    <div
-      id="pricing"
-      className=" text-white px-4 py-16 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${bgImage.src})` }}
-    >
+    <div id="pricing" className="text-white px-4 py-16 bg-black">
       {/* Hero Section */}
-      <section className="flex items-center justify-center px-4 md:px-6 py-16 md:py-20">
+      <section className="flex items-center justify-center px-4 md:px-6 py-8 md:py-16">
         <div className="w-full md:w-10/12 mx-auto text-center">
           <div className="flex justify-start mb-4 md:mb-6">
-            <motion.div
-              className="flex items-center gap-2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
+            <div className="flex items-center gap-2">
               <CirclePlus className="w-6 h-6 text-white" />
-              <span className="text-md md:text-2xl  font-semibold text-white text-start">
+              <span className="text-md md:text-2xl font-semibold text-white text-start">
                 Simple Pricing.
               </span>
-            </motion.div>
+            </div>
           </div>
-
-          <motion.h1
-            className="text-4xl md:text-6xl lg:text-[80px] font-bold leading-tight"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
+          <h1 className="text-4xl md:text-6xl lg:text-[80px] font-bold leading-tight">
             Pricing.
-          </motion.h1>
+          </h1>
         </div>
       </section>
 
       {/* Pricing Section */}
       <div className="max-w-6xl mx-auto">
-        {/* Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 md:mb-8">
+        {/* Package Type Buttons */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 md:mb-8">
           <h2 className="text-lg md:text-xl font-medium">Services</h2>
-
-          <div className="flex gap-2 flex-wrap justify-center">
+          <div className="flex gap-2 flex-wrap w-full md:w-auto">
             {["Basic", "Standard", "Elite"].map((type) => (
               <button
                 key={type}
@@ -463,9 +420,9 @@ export function PricingSection() {
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {/* Services List */}
+        {/* Desktop Layout */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8">
+          {/* Desktop Services List */}
           <div className="bg-[#161616] rounded-2xl p-4 md:p-6 space-y-2 md:space-y-4">
             {services.map((service) => (
               <div key={service.id} className="space-y-2">
@@ -495,7 +452,6 @@ export function PricingSection() {
                   )}
                 </button>
 
-                {/* Child Services */}
                 {service.type === "parent" && expandedServices[service.id] && (
                   <div className="ml-4 space-y-2 border-l-2 border-gray-600 pl-4">
                     {service.children.map((childService) => (
@@ -517,17 +473,20 @@ export function PricingSection() {
             ))}
           </div>
 
-          {/* Content + Features */}
-          <div className="col-span-2 bg-[#161616] rounded-2xl p-4 md:p-8">
+          {/* Desktop Content + Features */}
+          <div className="md:col-span-2 bg-[#161616] rounded-2xl p-4 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-              {/* Content */}
               <div className="space-y-4 md:space-y-8">
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                   {content.description}
                 </p>
+                <Link href={"/meeting"}>
+                  <button className="bg-black hover:bg-gray-800 text-white  p-2 w-full mt-16 rounded-md">
+                    Enquire
+                  </button>
+                </Link>
               </div>
 
-              {/* Features */}
               <div className="space-y-2 md:space-y-4">
                 {content.features.map((feature, index) => {
                   const currentServiceData = serviceData[selectedService];
@@ -535,12 +494,10 @@ export function PricingSection() {
                     currentServiceData?.baseFeatures?.length || 0;
                   const standardLength =
                     currentServiceData?.standardFeatures?.length || 0;
-
                   const isStandardFeature =
                     (packageType === "Standard" || packageType === "Elite") &&
                     index >= baseLength &&
                     index < baseLength + standardLength;
-
                   const isEliteFeature =
                     packageType === "Elite" &&
                     index >= baseLength + standardLength;
@@ -548,11 +505,11 @@ export function PricingSection() {
                   return (
                     <div
                       key={index}
-                      className="flex items-center gap-2 md:gap-3 "
+                      className="flex items-start gap-2 md:gap-3"
                     >
                       <Plus
-                        size={8}
-                        className="w-4 md:w-6 h-4 md:h-6 text-white flex-shrink-0 bg-[#686868] p-[1px] rounded-full "
+                        size={16}
+                        className="w-4 md:w-5 h-4 md:h-5 text-white flex-shrink-0 bg-[#686868] p-[2px] rounded-full mt-0.5"
                       />
                       <span
                         className={`text-sm md:text-base ${
@@ -572,39 +529,112 @@ export function PricingSection() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Layout - Image Style: Left Services, Right Features */}
+        <div className="md:hidden bg-[#161616] rounded-2xl p-4">
+          <div className="grid grid-cols-[40%_60%] gap-4">
+            {/* Left Column: Service Names */}
+            <div className="space-y-1">
+              {services.map((service) => (
+                <div key={service.id} className="space-y-1">
+                  <button
+                    onClick={() => {
+                      if (service.type === "parent") {
+                        toggleServiceExpansion(service.id);
+                      } else {
+                        setSelectedService(service.id);
+                      }
+                    }}
+                    className={`text-left w-full py-2 transition-colors text-sm ${
+                      selectedService === service.id
+                        ? "text-orange-400 font-medium"
+                        : "text-white"
+                    }`}
+                  >
+                    {service.name}
+                  </button>
+
+                  {service.type === "parent" &&
+                    expandedServices[service.id] && (
+                      <div className="pl-3 space-y-1 border-l border-gray-600">
+                        {service.children.map((childService) => (
+                          <button
+                            key={childService}
+                            onClick={() => setSelectedService(childService)}
+                            className={`text-left w-full py-1.5 transition-colors text-xs block ${
+                              selectedService === childService
+                                ? "text-orange-400 font-medium"
+                                : "text-gray-400"
+                            }`}
+                          >
+                            {childService}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                </div>
+              ))}
+            </div>
+
+            {/* Right Column: Features */}
+            <div className="space-y-2">
+              {content.features.map((feature, index) => {
+                const currentServiceData = serviceData[selectedService];
+                const baseLength =
+                  currentServiceData?.baseFeatures?.length || 0;
+                const standardLength =
+                  currentServiceData?.standardFeatures?.length || 0;
+                const isStandardFeature =
+                  (packageType === "Standard" || packageType === "Elite") &&
+                  index >= baseLength &&
+                  index < baseLength + standardLength;
+                const isEliteFeature =
+                  packageType === "Elite" &&
+                  index >= baseLength + standardLength;
+
+                return (
+                  <div key={index} className="flex items-start gap-1.5">
+                    <Plus
+                      size={10}
+                      className="w-3 h-3 text-white flex-shrink-0 bg-[#686868] p-[2px] rounded-full mt-0.5"
+                    />
+                    <span
+                      className={`text-xs leading-tight ${
+                        isEliteFeature
+                          ? "text-orange-400"
+                          : isStandardFeature
+                          ? "text-[#edd8c5]"
+                          : "text-white"
+                      }`}
+                    >
+                      {feature}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="w-full md:w-10/12 mx-auto text-center mt-16">
-        <motion.div
-          className="flex items-center justify-start gap-2 mb-5"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <div className="">
-            <CirclePlus className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-md md:text-2xl font-[600] text-white">
+      {/* Bottom Section */}
+      <div className="w-full md:w-10/12 mx-auto text-center mt-12 md:mt-16">
+        <div className="flex items-center justify-start gap-2 mb-5">
+          <CirclePlus className="w-6 h-6 text-white" />
+          <span className="text-md md:text-2xl font-semibold text-white">
             Looking for more?
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          className="text-2xl md:text-4xl  font-[700] text-balance leading-tight md:px-60 px-0"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-balance leading-tight md:px-40 lg:px-60 px-0">
           <span className="text-white">
             Add a 30min strategy session in our elite package
           </span>{" "}
-          <span className="text-[#8c8989] ">
+          <span className="text-[#8c8989]">
             to strengthen your project. We'll shape a solution that fits your
             business, not ours.
           </span>
-        </motion.h1>
+        </h2>
       </div>
     </div>
   );

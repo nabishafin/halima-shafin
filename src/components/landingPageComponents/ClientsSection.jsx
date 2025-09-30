@@ -20,7 +20,6 @@ import custologo5 from "../../../public/custo-logo-5.avif";
 import custologo6 from "../../../public/custo-logo-6.png";
 
 export function ClientsSection() {
-  useLocoScroll(); // locomotive optional
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const portfolioItems = [
@@ -75,7 +74,7 @@ export function ClientsSection() {
   ];
 
   return (
-    <section id="clients" className="data-scroll-section py-0 md:py-10 px-4">
+    <section id="clients" className=" py-0 md:py-10 px-4">
       <div className="w-full lg:w-11/12 mx-auto">
         {/* Title Section */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-center mb-12">

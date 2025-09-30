@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import useLocoScroll from "@/hooks/useLocoScroll";
+
 import { CirclePlus } from "lucide-react";
 
 export function ContentSection() {
-  useLocoScroll(); // Optional
-
   return (
-    <div className="data-scroll-section">
+    <div className="">
       <section className="flex items-center justify-center px-6 py-20 ">
         <div className="w-full lg:w-11/12 mx-auto text-center">
           {/* Top indicator */}

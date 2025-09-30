@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ConfirmationPage from "@/components/landingPageComponents/ConfirmationPage";
 import ContactForm from "@/components/landingPageComponents/ContactForm";
 import DateTimeSelector from "@/components/landingPageComponents/DateTimeSelector";
@@ -18,8 +18,15 @@ export default function MeetingScheduler() {
     additionalInfo: "",
   });
 
+  // One-time reload on initial page load
+  useEffect(() => {
+    if (!sessionStorage.getItem("hasReloaded")) {
+      sessionStorage.setItem("hasReloaded", "true");
+      window.location.reload();
+    }
+  }, []);
+
   const handleDateTimeSubmit = (date, timezone, time) => {
-    // Ensure date is properly stored
     setMeetingData((prev) => ({
       ...prev,
       date: date ? new Date(date) : null,
@@ -33,8 +40,7 @@ export default function MeetingScheduler() {
     const updatedData = { ...meetingData, ...contactData };
     setMeetingData(updatedData);
 
-    // Email is now sent from ContactForm component
-    // So we just proceed to confirmation page
+    // Proceed to confirmation page
     setStep("confirmation");
   };
 

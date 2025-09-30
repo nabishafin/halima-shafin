@@ -9,31 +9,31 @@ export function StepsSection() {
   const steps = [
     {
       number: "01",
-      title: "Re-define",
+      title: "Re: Define",
       text: "Clarity is strategy. We align your brand’s story, structure, and positioning so it speaks with intent.",
       activeDots: 1,
     },
     {
       number: "02",
-      title: "Re-design",
+      title: "Re: Design",
       text: "From product to packaging, every detail is meticulously tailored — turning vision into assets that endure.",
       activeDots: 2,
     },
     {
       number: "03",
-      title: "Re-present",
+      title: "Re: Present",
       text: "Visibility with precision. We translate your brand story into campaigns, content, and storytelling that cut through the noise.",
       activeDots: 3,
     },
     {
       number: "04",
-      title: "Re-scale",
+      title: "Re: Scale",
       text: "Growth with clarity. We design marketing and partnerships that transform visibility into market position and market position into measurable growth.",
       activeDots: 4,
     },
     {
       number: "05",
-      title: "Re-structure",
+      title: "Re: Structure",
       text: "Growth demands structure. We design the operations, systems, and workflows that let your business scale without breaking.",
       activeDots: 5,
     },

@@ -7,8 +7,6 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
 export function TestimonialSection() {
-  useLocoScroll(); // optional
-
   const numberStats = [
     { id: 1, number: 5000, suffix: "+", cardNumber: "01" },
     { id: 2, number: 98, suffix: "%", cardNumber: "02" },
@@ -27,7 +25,7 @@ export function TestimonialSection() {
   const [ref, inView] = useInView({ threshold: 0.3 });
 
   return (
-    <section className="data-scroll-section py-16 px-4">
+    <section className=" py-16 px-4">
       <div className="w-full lg:w-11/12 mx-auto">
         {/* Header */}
         <motion.div
