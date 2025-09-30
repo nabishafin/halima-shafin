@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/sheared/Navbar";
 import { Footer } from "@/components/sheared/Footer";
 import useLocoScroll from "@/hooks/useLocoScroll";
+import FixedButton from "@/components/ui/FixedButton";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </div>
+        <FixedButton />
       </body>
     </html>
   );
