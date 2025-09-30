@@ -4,7 +4,7 @@ import { Plus, CirclePlus, ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 
 export function PricingSection() {
-  const [packageType, setPackageType] = useState("Basic");
+  const [packageType, setPackageType] = useState("Essential");
   const [selectedService, setSelectedService] = useState("Re-define");
   const [expandedServices, setExpandedServices] = useState({});
 
@@ -89,7 +89,7 @@ export function PricingSection() {
         "Up to 5 tech packs",
         "Full packaging suite",
         "Up to 2 Surface pattern designs",
-        "Basic collateral design",
+        "Essential collateral design",
         "Ongoing graphics support",
       ],
       eliteFeatures: [
@@ -108,7 +108,7 @@ export function PricingSection() {
         "Professional headshots",
         "Bio & profile optimization",
         "Social media content strategy",
-        "Basic video introductions",
+        "Essential video introductions",
         "1x revision per deliverable",
         "Platform-specific formatting",
       ],
@@ -162,7 +162,7 @@ export function PricingSection() {
         "Professional product showcasing content for e-commerce and marketing.",
       baseFeatures: [
         "Product photography",
-        "Basic video demonstrations",
+        "Essential video demonstrations",
         "Feature highlight reels",
         "1x revision per product",
         "White background shots",
@@ -190,7 +190,7 @@ export function PricingSection() {
         "Strategic content creation for digital platforms and marketing campaigns.",
       baseFeatures: [
         "Monthly content calendar",
-        "Basic graphic templates",
+        "Essential graphic templates",
         "Social media posts",
         "1x revision per content",
         "Platform optimization",
@@ -221,7 +221,7 @@ export function PricingSection() {
         "Highlight reel (up to 2 mins)",
         "Social media snippets",
         "1x revision per deliverable",
-        "Basic editing",
+        "Essential editing",
         "Quick turnaround",
       ],
       standardFeatures: [
@@ -247,7 +247,7 @@ export function PricingSection() {
       baseFeatures: [
         "Up to 60 sec campaign video",
         "Script development",
-        "Basic storyboarding",
+        "Essential storyboarding",
         "1x revision",
         "Multi-platform formatting",
         "Music licensing",
@@ -274,7 +274,7 @@ export function PricingSection() {
         "Strategic growth marketing and scaling solutions to expand your digital footprint.",
       baseFeatures: [
         "Growth audit & strategy",
-        "Basic SEO",
+        "Essential SEO",
         "2 Social media management",
         "4 email campaigns / month",
         "Influencer roadmap",
@@ -309,7 +309,7 @@ export function PricingSection() {
         "Workflow streamlining",
         "CRM / inventory / PM setup",
         "Supply chain health check",
-        "Basic reporting",
+        "Essential reporting",
       ],
       standardFeatures: [
         "Full systems implementation",
@@ -331,7 +331,7 @@ export function PricingSection() {
   };
 
   const getServiceContent = () => {
-    const isBasic = packageType === "Basic";
+    const isEssential = packageType === "Essential";
     const isStandard = packageType === "Standard";
     const isElite = packageType === "Elite";
 
@@ -340,7 +340,7 @@ export function PricingSection() {
         "Professional business transformation services tailored to your growth needs.",
       baseFeatures: [
         "Initial consultation",
-        "Basic strategy development",
+        "Essential strategy development",
         "Core implementation",
         "Progress reporting",
         "1x revision",
@@ -404,7 +404,7 @@ export function PricingSection() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 md:mb-8">
           <h2 className="text-lg md:text-xl font-medium">Services</h2>
           <div className="flex gap-2 flex-wrap w-full md:w-auto">
-            {["Basic", "Standard", "Elite"].map((type) => (
+            {["Essential", "Standard", "Elite"].map((type) => (
               <button
                 key={type}
                 onClick={() => setPackageType(type)}

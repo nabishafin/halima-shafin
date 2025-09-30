@@ -94,7 +94,7 @@ export function TeamSection() {
             >
               <motion.div className="space-y-2" custom={0} variants={fadeUp}>
                 <h1 className="text-5xl lg:text-6xl font-bold text-black leading-tight">
-                  Built by <span className="text-black">.Creatives</span>
+                  Built by <span className="text-black">Creatives</span>
                 </h1>
                 <h2 className="text-4xl lg:text-5xl font-bold text-[#686868] leading-tight">
                   Powered
@@ -127,11 +127,11 @@ export function TeamSection() {
                   </p>
                 </div>
 
-                <Link href={"/meeting"}>
+                <a href="mailto:people@thereinitiative.com?subject=Joining%20Request&body=Hello,%20I%20want%20to%20join.">
                   <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-3 text-base font-medium transition-colors">
                     Join us
                   </Button>
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
 

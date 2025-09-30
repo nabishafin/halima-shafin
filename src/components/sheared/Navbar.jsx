@@ -62,7 +62,7 @@ const Navbar = () => {
             <Link href={"/"} className="text-3xl font-bold flex-shrink-0 ">
               <div className="flex gap-1 items-center justify-center">
                 <div className="border-3 px-1 ">Re:</div>
-                <div>interactive</div>
+                <div>Initiative</div>
               </div>
             </Link>
 

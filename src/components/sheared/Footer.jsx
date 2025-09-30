@@ -5,7 +5,7 @@ export function Footer() {
         {/* Left side content */}
         <div className="flex-1 max-w-2xl">
           <p className="text-sm text-gray-400 mb-4">
-            © 2025 Re: interactive. All rights reserved.
+            © 2025 Re: Initiative. All rights reserved.
           </p>
           <p className="text-gray-300 mb-4 leading-relaxed">
             We streamline your content creation process, helping you batch
