@@ -159,7 +159,7 @@ export function TeamSection() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110" // Slightly more zoomed-in effect
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:blur-sm"
                     priority={index < 2}
                   />
 
