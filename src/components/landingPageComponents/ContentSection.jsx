@@ -9,6 +9,12 @@ export function ContentSection() {
     <div className="">
       <section className="flex items-center justify-center px-6 py-20 ">
         <div className="w-full lg:w-11/12 mx-auto text-center">
+          <div className="flex items-center justify-start gap-2 mb-4">
+            <CirclePlus className="w-6 h-6 text-black" />
+            <span className="text-lg font-semibold text-black">
+              We've met you before
+            </span>
+          </div>
           {/* Top indicator */}
           <motion.div
             className="flex items-center justify-start gap-2 mb-12"
