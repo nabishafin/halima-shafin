@@ -10,8 +10,8 @@ export function ContentSection() {
       <section className="flex items-center justify-center px-6 py-20 ">
         <div className="w-full lg:w-11/12 mx-auto text-center">
           <div className="flex items-center justify-start gap-2 mb-4">
-            <CirclePlus className="w-6 h-6 text-black" />
-            <span className="text-lg font-semibold text-black">
+            <CirclePlus className="w-6 h-6 text-[#686868] font-bold" />
+            <span className="text-lg md:text-2xl font-semibold text-[#686868]">
               We've met you before
             </span>
           </div>
