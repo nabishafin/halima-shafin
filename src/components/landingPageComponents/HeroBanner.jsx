@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const HeroBanner = () => {
+const HeroBanner = React.memo(() => {
   return (
     <section className="relative w-full py-28 md:py-80 overflow-hidden">
       {/* Background Video */}
@@ -64,6 +64,6 @@ const HeroBanner = () => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default HeroBanner;

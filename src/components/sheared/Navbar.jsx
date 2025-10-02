@@ -44,6 +44,10 @@ const Navbar = () => {
         duration: 1000,
         easing: [0.25, 0.0, 0.35, 1.0],
       });
+      setTimeout(() => {
+        locomotiveScroll.update();
+        setTimeout(() => locomotiveScroll.update(), 500);
+      }, 1000);
     } else if (section) {
       // Fallback: যদি Locomotive Scroll available না থাকে
       const yOffset = -100;

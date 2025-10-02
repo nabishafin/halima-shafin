@@ -42,15 +42,7 @@ export default function DateTimeSelector({
   const [selectedDate, setSelectedDate] = useState(undefined);
   const [selectedTimezone, setSelectedTimezone] = useState(initialTimezone);
   const [selectedTime, setSelectedTime] = useState(initialTime);
-  const [isClient, setIsClient] = useState(false);
 
-  // Fix hydration issue
-  useEffect(() => {
-    setIsClient(true);
-    if (initialDate) {
-      setSelectedDate(new Date(initialDate));
-    }
-  }, [initialDate]);
 
   const handleSubmit = () => {
     if (selectedDate && selectedTime) {
@@ -60,31 +52,7 @@ export default function DateTimeSelector({
 
   const isFormValid = selectedDate && selectedTime;
 
-  // Don't render calendar until client-side to avoid hydration issues
-  if (!isClient) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-6xl grid lg:grid-cols-[400px_1fr] gap-8">
-          <Card className="p-8 h-fit">
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">2025</p>
-                <h1 className="text-2xl font-semibold text-balance">
-                  Discovery Call
-                </h1>
-              </div>
-            </div>
-          </Card>
-          <Card className="p-8">
-            <div className="animate-pulse">
-              <div className="h-6 bg-gray-200 rounded w-1/3 mb-6"></div>
-              <div className="h-64 bg-gray-200 rounded mb-8"></div>
-            </div>
-          </Card>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

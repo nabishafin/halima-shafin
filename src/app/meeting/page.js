@@ -1,9 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import ConfirmationPage from "@/components/landingPageComponents/ConfirmationPage";
-import ContactForm from "@/components/landingPageComponents/ContactForm";
-import DateTimeSelector from "@/components/landingPageComponents/DateTimeSelector";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+
+const DateTimeSelector = dynamic(() => import("@/components/landingPageComponents/DateTimeSelector"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+const ContactForm = dynamic(() => import("@/components/landingPageComponents/ContactForm"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+const ConfirmationPage = dynamic(() => import("@/components/landingPageComponents/ConfirmationPage"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+
 
 export default function MeetingScheduler() {
   const [step, setStep] = useState("datetime"); // "datetime" | "contact" | "confirmation"
@@ -18,13 +30,7 @@ export default function MeetingScheduler() {
     additionalInfo: "",
   });
 
-  // One-time reload on initial page load
-  useEffect(() => {
-    if (!sessionStorage.getItem("hasReloaded")) {
-      sessionStorage.setItem("hasReloaded", "true");
-      window.location.reload();
-    }
-  }, []);
+
 
   const handleDateTimeSubmit = (date, timezone, time) => {
     setMeetingData((prev) => ({
