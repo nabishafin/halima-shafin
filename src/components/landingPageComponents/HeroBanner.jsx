@@ -25,7 +25,7 @@ const HeroBanner = React.memo(() => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.h1
-          className="text-white text-3xl  sm:text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
+          className="text-white text-3xl  sm:text-4xl md:text-4xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
