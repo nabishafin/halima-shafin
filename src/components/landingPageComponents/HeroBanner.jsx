@@ -25,7 +25,7 @@ const HeroBanner = React.memo(() => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.h1
-          className="text-white text-4xl  sm:text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
+          className="text-white text-3xl  sm:text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg leading-snug max-w-full px-2"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
@@ -34,7 +34,7 @@ const HeroBanner = React.memo(() => {
         </motion.h1>
 
         <motion.h2
-          className="text-[#9c9c9c] text-sm sm:text-base md:text-3xl font-semibold mb-2 max-w-full sm:max-w-3xl md:max-w-6xl mx-auto leading-relaxed px-2"
+          className="text-[#9c9c9c] text-sm sm:text-base md:text-2xl font-semibold mb-2 max-w-full sm:max-w-2xl md:max-w-6xl mx-auto leading-relaxed px-2"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
