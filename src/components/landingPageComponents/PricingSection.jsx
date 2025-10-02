@@ -582,10 +582,27 @@ export function PricingSection() {
                   {/* How it works button below description */}
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="relative overflow-hidden bg-[#2e2e2e] text-white px-6 py-2 border-[1px] rounded-full
-                   hover:bg-white hover:text-black transition-all duration-300"
+                    className="relative overflow-hidden bg-[#2e2e2e] text-white px-6 py-1 border rounded-full
+             transition-all duration-500 group"
                   >
-                    <span className="relative text-sm z-10">How it works</span>
+                    {/* Text with dot */}
+                    <span
+                      className="relative text-sm z-10 flex items-center gap-2 
+                   transition-colors duration-500 group-hover:text-black"
+                    >
+                      How it works
+                      {/* Dot */}
+                      <span
+                        className="w-2 h-2 bg-white rounded-full 
+                     transition-colors duration-500 group-hover:bg-black"
+                      ></span>
+                    </span>
+
+                    {/* White background overlay */}
+                    <span
+                      className="absolute inset-0 bg-white translate-x-[-100%] 
+                   group-hover:translate-x-0 transition-transform duration-500"
+                    ></span>
                   </button>
                 </div>
 
